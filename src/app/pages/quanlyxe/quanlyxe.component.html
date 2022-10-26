@@ -1,0 +1,18 @@
+<nz-table #basicTable [nzData]="listOfData">
+  <thead>
+    <tr>
+      <th>Tên nhà xe</th>
+      <th>Ngày di chuyển</th>
+      <th>Biển kiểm soát</th>
+      <th>Loại xe</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let data of basicTable.data">
+      <td>{{ data.name }}</td>
+      <td>{{ data.ngaydichuyen }}</td>
+      <td>{{ data.bienso }}</td>
+      <td>{{ data.loaixe }}</td>
+    </tr>
+  </tbody>
+</nz-table>

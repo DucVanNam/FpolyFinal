@@ -16,6 +16,7 @@ import { NzMenuModule } from 'ng-zorro-antd/menu';
 import { LayoutComponent } from './layout/layout.component';
 import { LoginModule } from './login/login.module';
 import { AntDesignModule } from './share/ant-design.module';
+import { LayoutQuanLyComponent } from './layoutquanly/layoutquanly.component';
 
 
 registerLocaleData(en);
@@ -23,7 +24,8 @@ registerLocaleData(en);
 @NgModule({
   declarations: [
     AppComponent, 
-    LayoutComponent
+    LayoutComponent,
+    LayoutQuanLyComponent
   ],
   imports: [
     BrowserModule,
