@@ -54,7 +54,7 @@ export class LoginComponent implements OnInit {
 
   submitLogin() {
     //this.router.navigate(['/dashboard'], { replaceUrl: true });
-    this.router.navigate(['/dashboard'], { replaceUrl: true });
+    this.router.navigate(['/datvexe'], { replaceUrl: true });
     //console.log("taxxx:", this.TenantId);
     // if (this.flagCheckTenant == false) {
     //   this.modal.error({
