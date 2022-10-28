@@ -23,7 +23,7 @@ registerLocaleData(en);
 
 @NgModule({
   declarations: [
-    AppComponent, 
+    AppComponent,
     LayoutComponent,
     LayoutQuanLyComponent
   ],
@@ -41,7 +41,7 @@ registerLocaleData(en);
   ],
   providers: [{ provide: NZ_I18N, useValue: en_US }],
   bootstrap: [AppComponent],
-  exports:[
+  exports: [
     AppComponent,
     LayoutComponent
   ]
