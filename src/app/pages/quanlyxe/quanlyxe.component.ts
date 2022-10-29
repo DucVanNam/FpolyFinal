@@ -13,6 +13,7 @@ interface Person {
 })
 
 export class QuanLyXeComponent{
+  date = null;
   constructor() {}
   listOfData: Person[] = [
     {
@@ -35,6 +36,54 @@ export class QuanLyXeComponent{
       bienso: '30L-55555',
       loaixe: 'Nạp ngay',
       ngaydichuyen: '12/12/2022'
+    },
+    {
+      key: '3',
+      name: 'Đầu tư ngay',
+      bienso: '30L-55555',
+      loaixe: 'Nạp ngay',
+      ngaydichuyen: '12/12/2022'
+    },
+    {
+      key: '3',
+      name: 'Đầu tư ngay',
+      bienso: '30L-55555',
+      loaixe: 'Nạp ngay',
+      ngaydichuyen: '12/12/2022'
+    },
+    {
+      key: '3',
+      name: 'Đầu tư ngay',
+      bienso: '30L-55555',
+      loaixe: 'Nạp ngay',
+      ngaydichuyen: '12/12/2022'
+    },
+    {
+      key: '3',
+      name: 'Đầu tư ngay',
+      bienso: '30L-55555',
+      loaixe: 'Nạp ngay',
+      ngaydichuyen: '12/12/2022'
+    },
+    {
+      key: '3',
+      name: 'Đầu tư ngay',
+      bienso: '30L-55555',
+      loaixe: 'Nạp ngay',
+      ngaydichuyen: '12/12/2022'
     }
   ];
+  isVisible = false;
+  showModal(): void {
+    this.isVisible = true;
+  }
+  handleOk(): void {
+    console.log('Button ok clicked!');
+    this.isVisible = false;
+  }
+
+  handleCancel(): void {
+    console.log('Button cancel clicked!');
+    this.isVisible = false;
+  }
 }

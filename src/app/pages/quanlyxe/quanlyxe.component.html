@@ -1,3 +1,9 @@
+
+<div>
+  <button nz-button nzType="primary" style="float: right;">Xuất Excel</button>
+  <button nz-button nzType="primary" style="float: right;">Import Excel</button>
+  <button (click)="showModal()" nz-button nzType="primary" style="float: right;">Thêm xe</button>
+</div>
 <nz-table #basicTable [nzData]="listOfData">
   <thead>
     <tr>
@@ -16,3 +22,34 @@
     </tr>
   </tbody>
 </nz-table>
+
+<nz-modal [(nzVisible)]="isVisible" nzTitle="Thêm thông tin xe" (nzOnCancel)="handleCancel()" (nzOnOk)="handleOk()">
+  <ng-container *nzModalContent>
+    <nz-form-item>
+      <nz-form-control nzErrorTip="Vui lòng nhập lịch trình">
+          <nz-date-picker [(ngModel)]="date"></nz-date-picker>
+      </nz-form-control>
+    </nz-form-item>
+    <nz-form-item>
+      <nz-form-control nzErrorTip="Vui lòng nhập biểm kiểm soát!">
+        <nz-input-group nzPrefixIcon="user">
+          <input type="text" nz-input formControlName="userName" placeholder="Biển kiểm soát" />
+        </nz-input-group>
+      </nz-form-control>
+    </nz-form-item>
+    <nz-form-item>
+      <nz-form-control nzErrorTip="Vui lòng nhập màu xe!">
+        <nz-input-group nzPrefixIcon="user">
+          <input type="text" nz-input formControlName="userName" placeholder="Màu xe" />
+        </nz-input-group>
+      </nz-form-control>
+    </nz-form-item>
+    <nz-form-item>
+      <nz-form-control nzErrorTip="Vui lòng nhập biểm kiểm soát!">
+        <nz-input-group nzPrefixIcon="user">
+          <input type="text" nz-input formControlName="userName" placeholder="Biển kiểm soát" />
+        </nz-input-group>
+      </nz-form-control>
+    </nz-form-item>
+  </ng-container>
+</nz-modal>

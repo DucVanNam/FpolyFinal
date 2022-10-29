@@ -136,9 +136,6 @@ export class DatvexeComponent{
     }
   ];
 
-  from = 'Hà Nội';
-  to = 'Bắc Giang';
-
   date = null;
 
   isVisible = false;
@@ -147,6 +144,8 @@ export class DatvexeComponent{
 
   //điểm đi
   inputValue?: string;
+  //điểm đến
+  inputValue2?: string;
   filteredOptions: string[] = [];
   options = ['Hà Nội', 'Lạng Sơn', 'Yên Bái','Quảng Ninh','Hải Dương','Hải Phòng','TP Hồ Chí Minh','Bến Tre',
   'An Giang', 'Bà Rịa - Vũng Tàu', 'Bắc Giang','Bắc Kạn','Bạc Liêu','Bắc Ninh','Bình Định','Bình Dương','Bình Phức',
@@ -190,12 +189,13 @@ export class DatvexeComponent{
   onChange(value: string): void {
     this.filteredOptions = this.options.filter(option => option.toLowerCase().indexOf(value.toLowerCase()) !== -1);
   }
+  
 
   getAllByRoute(){
     const params ={
-      from : this.from,
-      to: this.to,
-      date: this.date
+      from : this.inputValue,
+      to: this.inputValue2,
+      departuretime: this.date
     }
     this.routeService.getAllByRoute(params).subscribe((res: any)=>{
        this.datas = res;

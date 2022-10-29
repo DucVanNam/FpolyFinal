@@ -2,17 +2,25 @@
     <nz-sider nzCollapsible [(nzCollapsed)]="isCollapsed" [nzTrigger]="null">
       <div class="logo"></div>
       <ul nz-menu nzTheme="dark" nzMode="inline">
-        <li nz-submenu nzTitle="Quản lý xe" nzIcon="car">
+        <!-- <li routerLink="dashboard" nz-submenu nzTitle="Quản lý xe" nzIcon="car">
           <ul>
             <li nz-menu-item>Tom</li>
             <li nz-menu-item>Bill</li>
             <li nz-menu-item>Alex</li>
           </ul>
+        </li> -->
+        <li nz-menu-item routerLink="quanlyxe">
+          <span nz-icon nzType="car"></span>
+          <span>Quản lý xe</span>
+        </li>
+        <li nz-menu-item routerLink="quanlychuyendi">
+          <span nz-icon nzType="car"></span>
+          <span>Quản lý chuyến đi</span>
         </li>
         <li nz-submenu nzTitle="Báo cáo" nzIcon="line-chart">
           <ul>
-            <li nz-menu-item>Team 1</li>
-            <li nz-menu-item>Team 2</li>
+            <li nz-menu-item>Báo cáo 1</li>
+            <li nz-menu-item>Báo cáo 2</li>
           </ul>
         </li>
         <li nz-menu-item>

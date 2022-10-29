@@ -4,9 +4,9 @@ import { ServiceBaseService } from 'src/app/services/service-base.service';
 @Injectable({
   providedIn: 'root'
 })
-export class DatVeXeService extends ServiceBaseService{
+export class QuanLyChuyenDiService extends ServiceBaseService{
  getAllByRoute(params: any){
-    return this.post(`api/Coach/get-all-by-route`, params);
+    return this.post(`api/Coach/GetAllByRoute`, params);
  }
 
 }

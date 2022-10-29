@@ -7,18 +7,18 @@
       <nz-input-group nzCompact style="margin: auto; position: fixed; top:45%; ">
         <div class="example-input">
           <input style="height: 40px;" placeholder='Chọn điểm đi' nz-input [(ngModel)]="inputValue"
-            (ngModelChange)="onChange($event)" [nzAutocomplete]="auto" />
+             [nzAutocomplete]="auto" (ngModelChange)="onChange($event)"/>
           <nz-autocomplete [nzDataSource]="filteredOptions" #auto></nz-autocomplete>
         </div>
         <div class="example-input">
-          <input style="height: 40px;" placeholder='Chọn điểm đến' nz-input [nzAutocomplete]="auto" />
+          <input [(ngModel)]="inputValue2"style="height: 40px;" placeholder='Chọn điểm đến' nz-input [nzAutocomplete]="auto" (ngModelChange)="onChange($event)"/>
           <nz-autocomplete [nzDataSource]="filteredOptions" #auto></nz-autocomplete>
         </div>
         <div>
           <nz-date-picker nzPlaceHolder="Chọn ngày" style="height: 40px; text-align: center; margin: 0;"
             [(ngModel)]="date" (ngModelChange)="onChange($event)" nzFormat="dd/MM/yyyy"></nz-date-picker>
         </div>
-        <div>
+        <div> 
 
           <button nz-button nzType="primary" nzSize="large">
             <span nzTheme="outline" style=" width: 170px; text-align: center;" (click)="getAllByRoute()">Tìm vé</span>

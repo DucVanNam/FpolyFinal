@@ -17,7 +17,8 @@ const routes: Routes = [
   {
     path: '', component: LayoutQuanLyComponent,
     children: [
-      { path: 'quanlyxe', loadChildren: () => import('./pages/quanlyxe/quanlyxe.module').then(m => m.QuanLyXeModule) }
+      { path: 'quanlyxe', loadChildren: () => import('./pages/quanlyxe/quanlyxe.module').then(m => m.QuanLyXeModule) },
+      { path: 'quanlychuyendi', loadChildren: () => import('./pages/quanlychuyendi/quanlychuyendi.module').then(m => m.QuanLyChuyenDiModule) }
     ]
   },
 ];
