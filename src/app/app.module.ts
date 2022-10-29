@@ -1,6 +1,4 @@
-import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { NZ_I18N } from 'ng-zorro-antd/i18n';
@@ -17,6 +15,7 @@ import { LayoutComponent } from './layout/layout.component';
 import { LoginModule } from './login/login.module';
 import { AntDesignModule } from './share/ant-design.module';
 import { LayoutQuanLyComponent } from './layoutquanly/layoutquanly.component';
+import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 
 
 registerLocaleData(en);
@@ -39,6 +38,7 @@ registerLocaleData(en);
     LoginModule,
     AntDesignModule,
   ],
+  schemas: [ CUSTOM_ELEMENTS_SCHEMA ],
   providers: [{ provide: NZ_I18N, useValue: en_US }],
   bootstrap: [AppComponent],
   exports:[
