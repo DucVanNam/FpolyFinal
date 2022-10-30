@@ -47,3 +47,31 @@ nz-select {
     color: #fff;
     overflow: hidden;
   }
+
+//   .circle::before{
+//     display: block;
+//     content: ' ';
+//     height: 40px;
+//     width: 32px;
+//     background-color: red;
+//     -webkit-mask-image: url(../../assets/icon/seat-svgrepo-com.svg);
+//     mask-image: url(../../assets/icon/seat-svgrepo-com.svg);
+//     -webkit-mask-size: 100%;
+//     mask-size: 100%;
+//     -webkit-mask-repeat: no-repeat;
+//     mask-repeat: no-repeat;
+// }
+
+svg {
+  fill: red;
+}
+
+.chuyenxanh{
+  fill: green;
+}
+.khongchuyen{
+  fill: red;
+}
+.chuyenxam{
+  fill: gray;
+}

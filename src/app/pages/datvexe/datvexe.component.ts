@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { DatVeXeService } from './datvexe.service';
-interface AllByRoute{
+interface IAllByRoute{
   coachOwner: string;
   emptySeats: number;
   from: string;
@@ -9,6 +9,19 @@ interface AllByRoute{
   ticketPrice: string;
   schedule: string;
 }
+
+interface IDetailCoach{
+  dropOffs: [];
+  pickups: [];
+  price: number;
+  reverse: boolean;
+  seats: ISeats [];
+}
+interface ISeats{
+  customPrice: number;
+  seatNo: number;
+  status: boolean;
+}
 @Component({
   selector: 'app-datvexe',
   templateUrl: './datvexe.component.html',
@@ -16,7 +29,8 @@ interface AllByRoute{
 })
 export class DatvexeComponent{
   array = ['Chúng tôi sẽ đưa đến cho bạn một trải nghiệm tốt nhất'];
-  datas:AllByRoute[]=[];
+  datas:IAllByRoute[]=[];
+  datatest:IDetailCoach[]=[];
   data2 = [
     {
       id: 1,
@@ -83,7 +97,8 @@ export class DatvexeComponent{
       trangthai: 0
     }
   ];
-
+  radioValue = '';
+  radioValue2 = '';
   date = null;
 
   isVisible = false;
@@ -110,14 +125,13 @@ export class DatvexeComponent{
   }
 
   chuyenMau(item: any) {
-
-    if (this.data2[item].trangthai == 1)
-      this.data2[item].trangthai = 0;
+    if (item.status == 1)
+      item.status = 0;
     else
-      this.data2[item].trangthai = 1;
+      item.status = 1;
   }
 
-  test(item: any) {
+  thongtin(item: any) {
     console.log('data', item);
     this.isVisible = true;
   }
@@ -133,7 +147,6 @@ export class DatvexeComponent{
   }
 
   handleCancel(): void {
-    console.log('Button cancel clicked!');
     this.isVisible = false;
     this.isVisible2 = false;
   }
@@ -141,7 +154,6 @@ export class DatvexeComponent{
     this.filteredOptions = this.options.filter(option => option.toLowerCase().indexOf(value.toLowerCase()) !== -1);
   }
   
-
   getAllByRoute(){
     const params ={
       from : this.inputValue,
@@ -150,13 +162,19 @@ export class DatvexeComponent{
     }
     this.routeService.getAllByRoute(params).subscribe((res: any)=>{
        this.datas = res;
-       console.log('data', res);
-       console.log('data', this.datas);
     })
   }
 
-  thongtin(item: any) {
+  datve(item: any) {
+    const params ={
+      coachId: item.id
+    }
     console.log('data', item);
+    this.routeService.getDetailByRoute(params).subscribe((res: any)=>{
+      this.datatest = res;
+      console.log('data', this.datatest);
+
+   })
     this.isVisible2 = true;
   }
 }
