@@ -242,7 +242,7 @@
 
 <nz-list nzGrid style="margin-top: 20px;">
   <div nz-row [nzGutter]="48">
-    <div nz-col [nzSpan]="12" *ngFor="let item of data">
+    <div nz-col [nzSpan]="12" *ngFor="let item of datas">
       <nz-list-item>
         <nz-card>
           <div nz-row [nzGutter]="16">
@@ -253,21 +253,22 @@
             </div>
             <div nz-col class="gutter-row" [nzSpan]="8">
               <div class="inner-box">
-                <h3>{{item.name}}</h3>
-                <p>Số chỗ ngồi : {{ item.loaixe }}</p>
-                <p>Điểm đi : {{ item.diemdi }} • {{ item.giodi }}</p>
-                <p>Điểm đến : {{ item.diemtoi }} • {{ item.gioden }}</p>
+                <h3>{{item.coachOwner}}</h3>
+                <p>Số chỗ ngồi : {{ item.numberOfSeats }}</p>
+                <p>Thời gian đi : {{ item.schedule | date: 'dd/MM/yyyy • hh:mm'}}</p>
+                <!-- <p>Điểm đi : {{ item.from }} • {{ item.schedule }}</p>
+                <p>Điểm đến : {{ item.to }} • {{ item.schedule }}</p> -->
+                <button nz-button nzType="primary" (click)="test(item)">
+                  Chọn chuyến
+                </button>
               </div>
             </div>
             <div nz-col class="gutter-row" [nzSpan]="8">
               <div class="inner-box">
-                <h3>Giá vé : {{item.giave | currency: "VND"}}</h3>
-                <p>Còn {{ item.ghetrong }} chỗ trống</p>
-                <a>Thông tin chi tiết</a>
+                <h3>Giá vé : {{item.ticketPrice | currency: "VND"}}</h3>
+                <p>Còn {{ item.emptySeats }} chỗ trống</p>
                 <div>
-                  <button nz-button nzType="primary" (click)="test(item)">
-                    Chọn chuyến
-                  </button>
+                  <a (click)="thongtin(item)">Thông tin chi tiết</a>
                 </div>
               </div>
             </div>
@@ -277,3 +278,11 @@
     </div>
   </div>
 </nz-list>
+
+<nz-modal [(nzVisible)]="isVisible2" nzTitle="Thông tin chi tiết" (nzOnCancel)="handleCancel()" (nzOnOk)="handleOk()">
+  <ng-container *nzModalContent>
+    <p>Content one</p>
+    <p>Content two</p>
+    <p>Content three</p>
+  </ng-container>
+</nz-modal>
