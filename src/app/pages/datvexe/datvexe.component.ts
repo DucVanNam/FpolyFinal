@@ -11,16 +11,22 @@ interface IAllByRoute{
 }
 
 interface IDetailCoach{
-  dropOffs: [];
-  pickups: [];
-  price: number;
+  dropOffs: IDropOffs [];
+  price: Number;
   reverse: boolean;
   seats: ISeats [];
+  pickups: IPickups [];
 }
 interface ISeats{
-  customPrice: number;
-  seatNo: number;
-  status: boolean;
+  customPrice: Number;
+  seatNo: Number;
+  status: Number;
+}
+interface IPickups{
+  address: string;
+}
+interface IDropOffs{
+  address: string;
 }
 @Component({
   selector: 'app-datvexe',
@@ -101,6 +107,9 @@ export class DatvexeComponent{
   radioValue2 = '';
   date = null;
 
+  current = 0;
+  index = 0;
+
   isVisible = false;
   isVisible2 = false;
 
@@ -126,7 +135,7 @@ export class DatvexeComponent{
 
   chuyenMau(item: any) {
     if (item.status == 1)
-      item.status = 0;
+      item.status = 2;
     else
       item.status = 1;
   }
@@ -176,5 +185,39 @@ export class DatvexeComponent{
 
    })
     this.isVisible2 = true;
+  }
+
+  changeContent(): void {
+    switch (this.current) {
+      case 0: {
+        this.index = 0;
+        break;
+      }
+      case 1: {
+        this.index = 1;
+        break;
+      }
+      case 2: {
+        this.index = 2;
+        break;
+      }
+      default: {
+        this.index = 3;
+      }
+    }
+  }
+
+  pre(): void {
+    this.current -= 1;
+    this.changeContent();
+  }
+
+  next(): void {
+    this.current += 1;
+    this.changeContent();
+  }
+
+  done(): void {
+    console.log('done');
   }
 }
