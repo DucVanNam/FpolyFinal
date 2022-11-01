@@ -30,38 +30,43 @@
 </nz-layout> -->
 
 <nz-layout>
-    <nz-header style="background-color: rgb(240,242,245);">
-      <div class="logo"></div>
-      <ul style="background-color: rgb(240,242,245);" nz-menu nzTheme="light" nzMode="horizontal">
-        <li nz-menu-item>
-          <a routerLink="dashboard">TRANG CHỦ</a>
-        </li>
-        <li nz-menu-item>
-          <a routerLink="datvexe">ĐẶT VÉ XE</a>
-        </li>
-        <li nz-menu-item style="float: right;">
-          <a routerLink="login">ADMIN</a>
-        </li>
-      </ul>
-    </nz-header>
-    <nz-content>
-      <!-- <nz-breadcrumb>
+  <nz-header style="background-color: rgb(240,242,245);">
+    <div class="logo"></div>
+    <ul style="background-color: rgb(240,242,245);" nz-menu nzTheme="light" nzMode="horizontal">
+      <li nz-menu-item>
+        <a routerLink="dashboard">TRANG CHỦ</a>
+      </li>
+      <li nz-menu-item>
+        <a routerLink="datvexe">ĐẶT VÉ XE</a>
+      </li>
+      <li nz-menu-item style="min-height:60px" class="Navbar__GroupItem-sc-19tf8g-5 csGmta"><a
+          class="Navbar__LinkNormalStyled-sc-19tf8g-2 Navbar__LinkHotLineStyled-sc-19tf8g-4 epVqyX cbZbtn"><img
+            src="https://storage.googleapis.com/fe-production/svgIcon/hotline-icon.svg" alt="hotline" width="18"
+            height="18" style="width:18px;margin-bottom:2px;margin-right:5px">Hotline</a></li>
+      <li nz-menu-item style="float: right;">
+        <a routerLink="login">ADMIN</a>
+      </li>
+    </ul>
+  </nz-header>
+  <nz-content>
+    <!-- <nz-breadcrumb>
         <nz-breadcrumb-item>Home</nz-breadcrumb-item>
         <nz-breadcrumb-item>List</nz-breadcrumb-item>
         <nz-breadcrumb-item>App</nz-breadcrumb-item>
       </nz-breadcrumb> -->
-      <div class="inner-content">       
-        <router-outlet></router-outlet>
-      </div>
-    </nz-content>
-    <nz-footer><div style="padding: 0px 16px;" >
+    <div class="inner-content">
+      <router-outlet></router-outlet>
+    </div>
+  </nz-content>
+  <nz-footer>
+    <div style="padding: 0px 16px;">
       <p>
-        <b>Công ty TNHH Thương Mại Dịch Vụ OME</b></p>
-        Địa chỉ đăng ký kinh doanh: Trường Cao Đẳng FPT Polytechnic
-        <br>Địa chỉ: Trịnh Văn Bô, Phương Canh, Nam Từ Liêm , Hà Nội, Việt Nam    
-        <br>Bản quyền © 2022 thuộc về Ome.Com
-        <br>Logo được thiết kế bởi ATHGroup
-      </div>
-    </nz-footer>
-  </nz-layout>
-  
+        <b>Công ty TNHH Thương Mại Dịch Vụ OME</b>
+      </p>
+      Địa chỉ đăng ký kinh doanh: Trường Cao Đẳng FPT Polytechnic
+      <br>Địa chỉ: Trịnh Văn Bô, Phương Canh, Nam Từ Liêm , Hà Nội, Việt Nam
+      <br>Bản quyền © 2022 thuộc về Ome.Com
+      <br>Logo được thiết kế bởi ATHGroup
+    </div>
+  </nz-footer>
+</nz-layout>
