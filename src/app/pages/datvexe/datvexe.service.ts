@@ -13,4 +13,8 @@ export class DatVeXeService extends ServiceBaseService{
   return this.post(`api/Coach/get-coach-detail`, params);
 }
 
+BookingVe(params: any){
+  return this.post(`api/Ticket/create-booking`, params);
+}
+
 }

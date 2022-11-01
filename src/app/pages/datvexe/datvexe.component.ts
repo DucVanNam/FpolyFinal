@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { DatVeXeService } from './datvexe.service';
+import { Router } from '@angular/router';
 interface IAllByRoute{
   coachOwner: string;
   emptySeats: number;
@@ -18,14 +19,17 @@ interface IDetailCoach{
   pickups: IPickups [];
 }
 interface ISeats{
+  id: string;
   customPrice: Number;
   seatNo: Number;
   status: Number;
 }
 interface IPickups{
+  id: string;
   address: string;
 }
 interface IDropOffs{
+  id: string;
   address: string;
 }
 @Component({
@@ -37,75 +41,14 @@ export class DatvexeComponent{
   array = ['Chúng tôi sẽ đưa đến cho bạn một trải nghiệm tốt nhất'];
   datas:IAllByRoute[]=[];
   datatest:IDetailCoach[]=[];
-  data2 = [
-    {
-      id: 1,
-      trangthai: 0
-    },
-    {
-      id: 2,
-      trangthai: 0
-    },
-    {
-      id: 3,
-      trangthai: 2
-    },
-    {
-      id: 4,
-      trangthai: 0
-    },
-    {
-      id: 5,
-      trangthai: 2
-    },
-    {
-      id: 6,
-      trangthai: 2
-    },
-    {
-      id: 7,
-      trangthai: 2
-    },
-    {
-      id: 8,
-      trangthai: 2
-    },
-    {
-      id: 9,
-      trangthai: 0
-    },
-    {
-      id: 10,
-      trangthai: 2
-    },
-    {
-      id: 11,
-      trangthai: 2
-    },
-    {
-      id: 12,
-      trangthai: 2
-    },
-    {
-      id: 13,
-      trangthai: 0
-    },
-    {
-      id: 14,
-      trangthai: 2
-    },
-    {
-      id: 15,
-      trangthai: 0
-    },
-    {
-      id: 16,
-      trangthai: 0
-    }
-  ];
+
+  data: ISeats[] = [];
   radioValue = '';
   radioValue2 = '';
   date = null;
+  soDienThoai = '';
+  hoTen = ''
+  email = '';
 
   current = 0;
   index = 0;
@@ -128,16 +71,53 @@ export class DatvexeComponent{
   
 ];
 
-  constructor(private routeService : DatVeXeService) {this.filteredOptions = this.options; }
+   
+  constructor(private routeService : DatVeXeService, public router: Router,) {this.filteredOptions = this.options; }
+  
+  valueRadio(){
+    
+  }
 
   ngOnInit(): void {
   }
 
   chuyenMau(item: any) {
-    if (item.status == 1)
-      item.status = 2;
-    else
+    if (item.status == 1){
+        item.status = 2;
+
+    }
+    else{
       item.status = 1;
+    }
+
+
+    if(this.data.length != 0){
+      for(let i = 0; i<this.data.length; i++){
+        if(item.id == this.data[i].id && item.status == 1){
+           this.data = this.data.filter(x => x.id != this.data[i].id)
+           break;
+        }
+        else if(item.status == 2){
+          this.data.push(item);
+          break;
+        }
+      }
+      // this.data.forEach(i => {
+      //   if(item.id == i.id){
+      //      this.data = this.data.filter(x => x.id != i.id)
+      //      return;
+      //   }
+      //   else{
+      //     this.data.push(item);
+      //     return;
+      //   }
+      // });
+    }
+    else{
+      this.data.push(item);
+    }
+    console.log('da',this.data);
+
   }
 
   thongtin(item: any) {
@@ -147,12 +127,6 @@ export class DatvexeComponent{
 
   showModal(): void {
     this.isVisible = true;
-  }
-
-  handleOk(): void {
-    console.log('Button ok clicked!');
-    this.isVisible = false;
-    this.isVisible2 = false;
   }
 
   handleCancel(): void {
@@ -217,7 +191,19 @@ export class DatvexeComponent{
     this.changeContent();
   }
 
-  done(): void {
-    console.log('done');
+  thanhtoan(): void {
+    window.open('https://localhost:44393/' ,'_blank')
+  //   const params ={
+  //     name: this.hoTen,
+  //     email: this.email,
+  //     phone: this.soDienThoai,
+  //     idPickup: this.radioValue,
+  //     idDropOff: this.radioValue2,
+  //     details : this.data
+  //   }
+  //   this.routeService.BookingVe(params).subscribe((res: any)=>{
+
+  //  })
+  //   this.isVisible2 = false;
   }
 }
