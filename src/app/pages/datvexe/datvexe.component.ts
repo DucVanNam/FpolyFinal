@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { DatVeXeService } from './datvexe.service';
 import { Router } from '@angular/router';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 interface IAllByRoute{
   coachOwner: string;
   emptySeats: number;
@@ -38,6 +39,9 @@ interface IDropOffs{
   styleUrls: ['./datvexe.component.scss']
 })
 export class DatvexeComponent{
+
+  isHienthi = false;
+
   array = ['Chúng tôi sẽ đưa đến cho bạn một trải nghiệm tốt nhất'];
   datas:IAllByRoute[]=[];
   datatest:IDetailCoach[]=[];
@@ -49,7 +53,7 @@ export class DatvexeComponent{
   soDienThoai = '';
   hoTen = ''
   email = '';
-
+  totalPaymentAmount = 0;
   current = 0;
   index = 0;
 
@@ -57,7 +61,7 @@ export class DatvexeComponent{
   isVisible2 = false;
 
   selectedValue = null;
-
+  timeout: any = null;
   //điểm đi
   inputValue?: string;
   //điểm đến
@@ -72,7 +76,10 @@ export class DatvexeComponent{
 ];
 
    
-  constructor(private routeService : DatVeXeService, public router: Router,) {this.filteredOptions = this.options; }
+  constructor(private routeService : DatVeXeService, public router: Router) {
+    
+    this.filteredOptions = this.options; 
+  }
   
   valueRadio(){
     
@@ -90,31 +97,26 @@ export class DatvexeComponent{
       item.status = 1;
     }
 
-
     if(this.data.length != 0){
       for(let i = 0; i<this.data.length; i++){
         if(item.id == this.data[i].id && item.status == 1){
            this.data = this.data.filter(x => x.id != this.data[i].id)
+           this.totalPaymentAmount -= item.customPrice;
            break;
         }
         else if(item.status == 2){
+          this.totalPaymentAmount += item.customPrice;
+          this.isHienthi = true;
           this.data.push(item);
           break;
         }
       }
-      // this.data.forEach(i => {
-      //   if(item.id == i.id){
-      //      this.data = this.data.filter(x => x.id != i.id)
-      //      return;
-      //   }
-      //   else{
-      //     this.data.push(item);
-      //     return;
-      //   }
-      // });
     }
     else{
       this.data.push(item);
+      this.isHienthi = true;
+      this.totalPaymentAmount += item.customPrice;
+      console.log('$',this.totalPaymentAmount);
     }
     console.log('da',this.data);
 
@@ -130,8 +132,15 @@ export class DatvexeComponent{
   }
 
   handleCancel(): void {
-    this.isVisible = false;
+    this.radioValue = '';
+    this.radioValue2 = '';
+    this.soDienThoai = '';
+    this.hoTen = ''
+    this.email = '';
+    this.totalPaymentAmount = 0;
     this.isVisible2 = false;
+    this.current = 0;
+    this.index = 0;
   }
   onChange(value: string): void {
     this.filteredOptions = this.options.filter(option => option.toLowerCase().indexOf(value.toLowerCase()) !== -1);
@@ -171,12 +180,8 @@ export class DatvexeComponent{
         this.index = 1;
         break;
       }
-      case 2: {
-        this.index = 2;
-        break;
-      }
       default: {
-        this.index = 3;
+        this.index = 2;
       }
     }
   }
@@ -187,23 +192,40 @@ export class DatvexeComponent{
   }
 
   next(): void {
-    this.current += 1;
-    this.changeContent();
+      this.current += 1;
+      this.changeContent();
   }
 
   thanhtoan(): void {
-    window.open('https://localhost:44393/' ,'_blank')
-  //   const params ={
-  //     name: this.hoTen,
-  //     email: this.email,
-  //     phone: this.soDienThoai,
-  //     idPickup: this.radioValue,
-  //     idDropOff: this.radioValue2,
-  //     details : this.data
-  //   }
-  //   this.routeService.BookingVe(params).subscribe((res: any)=>{
 
-  //  })
-  //   this.isVisible2 = false;
+    const params ={
+      name: this.hoTen,
+      email: this.email,
+      phone: this.soDienThoai,
+      idPickup: this.radioValue,
+      idDropOff: this.radioValue2,
+      totalPaymentAmount: this.totalPaymentAmount,
+      details : this.data
+    }
+    this.routeService.BookingVe(params).subscribe((res: any)=>{
+   })
+
+   clearTimeout(this.timeout);
+   const $this = this;
+   this.timeout = setTimeout(() => {
+    window.open('https://localhost:44393/' ,'_blank')
+   }, 2000);
+    this.handleCancel();
+  }
+
+  handleChonCho(): void {
+    console.log('Button ok clicked!');
+    this.isHienthi = false;
+    console.log('điểm đón', this.radioValue);
+    console.log('điểm trả', this.radioValue2);
+  }
+
+  handleCancelChonCho(): void{
+    this.isHienthi = false;
   }
 }

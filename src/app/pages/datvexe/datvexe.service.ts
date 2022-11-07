@@ -14,7 +14,7 @@ export class DatVeXeService extends ServiceBaseService{
 }
 
 BookingVe(params: any){
-  return this.post(`api/Ticket/create-booking`, params);
+  return this.post(`api/Booking/detail-ticket-redis-saving`, params);
 }
 
 }
