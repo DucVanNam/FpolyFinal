@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { DatVeXeService } from './datvexe.service';
 import { Router } from '@angular/router';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { NzModalService } from 'ng-zorro-antd/modal';
 interface IAllByRoute{
   coachOwner: string;
   emptySeats: number;
@@ -39,7 +39,6 @@ interface IDropOffs{
   styleUrls: ['./datvexe.component.scss']
 })
 export class DatvexeComponent{
-
   isHienthi = false;
 
   array = ['Chúng tôi sẽ đưa đến cho bạn một trải nghiệm tốt nhất'];
@@ -76,7 +75,7 @@ export class DatvexeComponent{
 ];
 
    
-  constructor(private routeService : DatVeXeService, public router: Router) {
+  constructor(private routeService : DatVeXeService, public router: Router, private modal: NzModalService) {
     
     this.filteredOptions = this.options; 
   }
@@ -86,6 +85,7 @@ export class DatvexeComponent{
   }
 
   ngOnInit(): void {
+   this.radioValue = this.datatest[0].pickups[0].id;
   }
 
   chuyenMau(item: any) {
@@ -161,11 +161,10 @@ export class DatvexeComponent{
     const params ={
       coachId: item.id
     }
-    console.log('data', item);
     this.routeService.getDetailByRoute(params).subscribe((res: any)=>{
       this.datatest = res;
-      console.log('data', this.datatest);
-
+      this.radioValue = item.pickups[0].id;
+      this.radioValue2 = item.dropOffs[0].id;
    })
     this.isVisible2 = true;
   }
@@ -192,8 +191,16 @@ export class DatvexeComponent{
   }
 
   next(): void {
-      this.current += 1;
-      this.changeContent();
+      if(this.data.length == 0){
+        this.modal.error({
+          nzTitle: 'Lỗi',
+          nzContent: 'Vui lòng chọn ít nhất 1 chỗ ngồi'
+        });
+      }
+      else{
+        this.current += 1;
+        this.changeContent();
+      }
   }
 
   thanhtoan(): void {
@@ -227,5 +234,7 @@ export class DatvexeComponent{
 
   handleCancelChonCho(): void{
     this.isHienthi = false;
+    console.log('điểm đón', this.radioValue);
+    console.log('điểm trả', this.radioValue2);
   }
 }
