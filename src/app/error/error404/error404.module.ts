@@ -13,4 +13,6 @@ import { error404Routes } from './error404.routing';
 })
 export class Error404Module
 {
+    
 }
+ 

@@ -6,4 +6,5 @@ export const error404Routes: Route[] = [
         path     : '',
         component: Error404Component
     }
+    
 ];
