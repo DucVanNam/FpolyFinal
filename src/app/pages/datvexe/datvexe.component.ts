@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { DatVeXeService } from './datvexe.service';
 import { Router } from '@angular/router';
-import { NzModalService } from 'ng-zorro-antd/modal';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 interface IAllByRoute{
   coachOwner: string;
@@ -39,10 +38,10 @@ interface IDropOffs{
   templateUrl: './datvexe.component.html',
   styleUrls: ['./datvexe.component.scss']
 })
-export class DatvexeComponent implements OnInit{
-  count = 0;
+export class DatvexeComponent{
+
   isHienthi = false;
-  validateForm!: FormGroup;
+
   array = ['Chúng tôi sẽ đưa đến cho bạn một trải nghiệm tốt nhất'];
   datas:IAllByRoute[]=[];
   datatest:IDetailCoach[]=[];
@@ -77,33 +76,17 @@ export class DatvexeComponent implements OnInit{
 ];
 
    
-  constructor(private routeService : DatVeXeService, public router: Router, private modal: NzModalService, public fb: FormBuilder) {
+  constructor(private routeService : DatVeXeService, public router: Router) {
     
     this.filteredOptions = this.options; 
-
   }
   
   valueRadio(){
     
   }
 
-  cong(){
-      this.count++;
-  }
-  tru(){
-    if(this.count >0){
-      this.count--;
-
-    }
-  }
   ngOnInit(): void {
-    this.validateForm = this.fb.group({
-      name: [null, [Validators.required]],
-      phone: [null, [Validators.required]],
-      email: [null, [Validators.required]],
-    });
   }
-  
 
   chuyenMau(item: any) {
     if (item.status == 1){
@@ -178,14 +161,11 @@ export class DatvexeComponent implements OnInit{
     const params ={
       coachId: item.id
     }
-    if (this.validateForm.valid) {
-      console.log('submit', this.validateForm.value);
-    }
-
+    console.log('data', item);
     this.routeService.getDetailByRoute(params).subscribe((res: any)=>{
       this.datatest = res;
-      this.radioValue = item.pickups[0].id;
-      this.radioValue2 = item.dropOffs[0].id;
+      console.log('data', this.datatest);
+
    })
     this.isVisible2 = true;
   }
@@ -212,48 +192,30 @@ export class DatvexeComponent implements OnInit{
   }
 
   next(): void {
-      if(this.data.length == 0){
-        this.modal.error({
-          nzTitle: 'Lỗi',
-          nzContent: 'Vui lòng chọn ít nhất 1 chỗ ngồi'
-        });
-      }
-      else{
-        this.current += 1;
-        this.changeContent();
-      }
+      this.current += 1;
+      this.changeContent();
   }
 
   thanhtoan(): void {
-    if (this.validateForm.valid) {
-      const params ={
-        name: this.hoTen,
-        email: this.email,
-        phone: this.soDienThoai,
-        idPickup: this.radioValue,
-        idDropOff: this.radioValue2,
-        totalPaymentAmount: this.totalPaymentAmount,
-        details : this.data
-      }
-      this.routeService.BookingVe(params).subscribe((res: any)=>{
-     })
-  
-     clearTimeout(this.timeout);
-     const $this = this;
-     this.timeout = setTimeout(() => {
-      window.open('https://localhost:44393/' ,'_blank')
-     }, 2000);
-      this.handleCancel();
-    }
-    else {
-      Object.values(this.validateForm.controls).forEach(control => {
-        if (control.invalid) {
-          control.markAsDirty();
-          control.updateValueAndValidity({ onlySelf: true });
-        }
-      });
-    }
 
+    const params ={
+      name: this.hoTen,
+      email: this.email,
+      phone: this.soDienThoai,
+      idPickup: this.radioValue,
+      idDropOff: this.radioValue2,
+      totalPaymentAmount: this.totalPaymentAmount,
+      details : this.data
+    }
+    this.routeService.BookingVe(params).subscribe((res: any)=>{
+   })
+
+   clearTimeout(this.timeout);
+   const $this = this;
+   this.timeout = setTimeout(() => {
+    window.open('https://localhost:44393/' ,'_blank')
+   }, 2000);
+    this.handleCancel();
   }
 
   handleChonCho(): void {
@@ -265,7 +227,5 @@ export class DatvexeComponent implements OnInit{
 
   handleCancelChonCho(): void{
     this.isHienthi = false;
-    console.log('điểm đón', this.radioValue);
-    console.log('điểm trả', this.radioValue2);
   }
 }

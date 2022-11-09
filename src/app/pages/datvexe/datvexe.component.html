@@ -567,13 +567,13 @@
     <div class="coach">
       <div nz-row [nzGutter]="16" nz-col nzSpan="12" >
         <table>
-          <tbody *ngIf="datatest[0]?.seats?.length == 45">
+          <tbody>
             <tr>
               <td>
                 <img src="../../assets/icon/volang.png" alt="" style="width: 30px ; height: 30px;">
               </td>
             </tr>
-            <tr *ngFor="let data of datatest[0]?.seats; let i = index" >
+            <tr *ngFor="let data of datatest[0]?.seats; let i = index">
               <td>
                 <div 
                  [ngClass]="data.status == 0 ? 'disable' : ''" title="Ghế số: {{data.seatNo}} - Giá: {{data.customPrice}}" (click)="chuyenMau(data)">
@@ -713,15 +713,6 @@
               </td>
             </tr>
           </tbody>
-          <tbody *ngIf="datatest[0]?.seats?.length != 45"  style="text-align: center;">
-              <h3>Chuyến này không hỗ trợ chọn chỗ</h3>
-              <div>
-                <p>Số lượng khách:</p>
-                   <button nz-button nzType="text" nzShape="circle" (click)="tru()">-</button>
-                   <span>{{count}}</span>
-                   <button nz-button nzType="text" nzShape="circle" (click)="cong()">+</button>  
-              </div>
-          </tbody>
         </table>
       </div>
     </div>
@@ -745,31 +736,36 @@
   </div>
 </div> -->
 <div *ngIf = "index === 1" class="steps-content">
-  <div  style="width: 300px; margin: auto;">
-  <form nz-form [formGroup]="validateForm" class="login-form">
+  <div style="width: 300px; margin: auto;">
     <nz-form-item>
-      <nz-form-control nzErrorTip="Vui lòng nhập họ tên!">
+      <nz-form-control nzErrorTip="Vui lòng nhập họ tên của bạn!">
         <nz-input-group nzPrefixIcon="user">
-          <input type="text" nz-input formControlName="name" placeholder="Nhập họ tên" />
-        </nz-input-group>
-      </nz-form-control>
-    </nz-form-item>
-    <nz-form-item>
-      <nz-form-control nzErrorTip="Vui lòng nhập số điện thoại!">
-        <nz-input-group nzPrefixIcon="user">
-          <input type="text" nz-input formControlName="phone" placeholder="Nhập số điện thoại" />
+          <input [(ngModel)] = "hoTen" type="text" nz-input placeholder="Họ và tên người đi" />
         </nz-input-group>
       </nz-form-control>
     </nz-form-item>
     <nz-form-item>
       <nz-form-control nzErrorTip="Vui lòng nhập email!">
-        <nz-input-group nzPrefixIcon="user">
-          <input type="text" nz-input formControlName="email" placeholder="Nhập email để nhận thông tin vé" />
+        <nz-input-group nzPrefixIcon="mail">
+          <input [(ngModel)] = "email" type="text" nz-input placeholder="Email để nhận thông tin vé" />
         </nz-input-group>
       </nz-form-control>
     </nz-form-item>
-  </form>
-</div>
+    <nz-form-item>
+      <nz-form-control nzErrorTip="Vui lòng nhập số điện thoại!">
+        <nz-input-group nzPrefixIcon="phone">
+          <input [(ngModel)] = "soDienThoai" type="text" nz-input placeholder="Số điện thoại" />
+        </nz-input-group>
+      </nz-form-control>
+    </nz-form-item>
+    <nz-form-item>
+      <nz-form-control>
+        <nz-input-group nzPrefixIcon="form">
+          <input type="text" nz-input placeholder="Ghi chú" />
+        </nz-input-group>
+      </nz-form-control>
+    </nz-form-item>
+  </div>
 </div>
 <div class="steps-action">
   <button nz-button nzType="default" (click)="pre()" *ngIf="current > 0">
