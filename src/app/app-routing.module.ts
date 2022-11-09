@@ -21,6 +21,8 @@ const routes: Routes = [
       { path: 'quanlychuyendi', loadChildren: () => import('./pages/quanlychuyendi/quanlychuyendi.module').then(m => m.QuanLyChuyenDiModule) }
     ]
   },
+  { path: '404-not-found', pathMatch: 'full', loadChildren: () => import('./error/error404/error404.module').then(m => m.Error404Module) },
+  { path: '**', redirectTo: '404-not-found' },
 ];
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
