@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { DatVeXeService } from './datvexe.service';
 import { Router } from '@angular/router';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { NzModalService } from 'ng-zorro-antd/modal';
 interface IAllByRoute{
   coachOwner: string;
   emptySeats: number;
@@ -38,9 +39,10 @@ interface IDropOffs{
   templateUrl: './datvexe.component.html',
   styleUrls: ['./datvexe.component.scss']
 })
-export class DatvexeComponent{
+export class DatvexeComponent implements OnInit{
 
   isHienthi = false;
+  validateForm!: FormGroup;
 
   array = ['Chúng tôi sẽ đưa đến cho bạn một trải nghiệm tốt nhất'];
   datas:IAllByRoute[]=[];
@@ -76,12 +78,17 @@ export class DatvexeComponent{
 ];
 
    
-  constructor(private routeService : DatVeXeService, public router: Router) {
+  constructor(private routeService : DatVeXeService, public router: Router, private modal: NzModalService, public fb: FormBuilder ) {
     
     this.filteredOptions = this.options; 
   }
   
   ngOnInit(): void {
+    this.validateForm = this.fb.group({
+      name:[null,[Validators.required]],
+      phone:[null,[Validators.required]],
+      email:[null,[Validators.required]],
+    })
   }
 
   chuyenMau(item: any) {
@@ -97,6 +104,7 @@ export class DatvexeComponent{
       for(let i = 0; i<this.data.length; i++){
         if(item.id == this.data[i].id && item.status == 1){
            this.data = this.data.filter(x => x.id != this.data[i].id)
+           console.log('chon', this.data)
            this.totalPaymentAmount -= item.customPrice;
            break;
         }
@@ -104,6 +112,7 @@ export class DatvexeComponent{
           this.totalPaymentAmount += item.customPrice;
           this.isHienthi = true;
           this.data.push(item);
+          console.log('chon', this.data)
           break;
         }
       }
@@ -112,10 +121,7 @@ export class DatvexeComponent{
       this.data.push(item);
       this.isHienthi = true;
       this.totalPaymentAmount += item.customPrice;
-      console.log('$',this.totalPaymentAmount);
     }
-    console.log('da',this.data);
-
   }
 
   thongtin(item: any) {
@@ -160,6 +166,8 @@ export class DatvexeComponent{
     console.log('data', item);
     this.routeService.getDetailByRoute(params).subscribe((res: any)=>{
       this.datatest = res;
+      this.radioValue = item.pickups[0].id,
+      this.radioValue2 = item.dropOffs[0].id,
       console.log('data', this.datatest);
 
    })
@@ -188,37 +196,51 @@ export class DatvexeComponent{
   }
 
   next(): void {
+    if(this.data.length == 0){
+      this.modal.error({
+        nzTitle: 'Lỗi',
+        nzContent: 'Vui lòng chọn ít nhất 1 chỗ ngồi'
+      })
+    }
+    else{
       this.current += 1;
       this.changeContent();
+    }
+
   }
 
   thanhtoan(): void {
-
-    const params ={
-      name: this.hoTen,
-      email: this.email,
-      phone: this.soDienThoai,
-      idPickup: this.radioValue,
-      idDropOff: this.radioValue2,
-      totalPaymentAmount: this.totalPaymentAmount,
-      details : this.data
+    if(this.validateForm.valid){
+      const params ={
+        name: this.hoTen,
+        email: this.email,
+        phone: this.soDienThoai,
+        totalPaymentAmount: this.totalPaymentAmount,
+        details : this.data
+      }
+      this.routeService.BookingVe(params).subscribe((res: any)=>{
+     })
+  
+     clearTimeout(this.timeout);
+     const $this = this;
+     this.timeout = setTimeout(() => {
+      window.open('https://localhost:44393/' ,'_blank')
+     }, 2000);
+      this.handleCancel();
     }
-    this.routeService.BookingVe(params).subscribe((res: any)=>{
-   })
+    else{
+      Object.values(this.validateForm.controls).forEach(control =>{
+        if(control.invalid){
+          control.markAsDirty();
+          control.updateValueAndValidity({onlySelf: true});
+        }
+      });
+    }
 
-   clearTimeout(this.timeout);
-   const $this = this;
-   this.timeout = setTimeout(() => {
-    window.open('https://localhost:44393/' ,'_blank')
-   }, 2000);
-    this.handleCancel();
   }
 
   handleChonCho(): void {
-    console.log('Button ok clicked!');
     this.isHienthi = false;
-    console.log('điểm đón', this.radioValue);
-    console.log('điểm trả', this.radioValue2);
   }
 
   handleCancelChonCho(): void{
