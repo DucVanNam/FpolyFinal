@@ -81,10 +81,6 @@ export class DatvexeComponent{
     this.filteredOptions = this.options; 
   }
   
-  valueRadio(){
-    
-  }
-
   ngOnInit(): void {
   }
 

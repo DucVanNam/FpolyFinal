@@ -5,12 +5,12 @@ import { LayoutQuanLyComponent } from './layoutquanly/layoutquanly.component';
 import { LoginComponent } from './login/login.component';
 
 const routes: Routes = [
-  { path: '', pathMatch: 'full', redirectTo: '/datvexe' },
+  { path: '', pathMatch: 'full', redirectTo: '/dashboard' },
   { path: 'login', component: LoginComponent },
   {
     path: '', component: LayoutComponent,
     children: [
-      //{ path: 'dashboard', loadChildren: () => import('./pages/dashboard/dashboard.module').then(m => m.DashboardModule) },
+      { path: 'dashboard', loadChildren: () => import('./pages/dashboard/dashboard.module').then(m => m.DashboardModule) },
       { path: 'datvexe', loadChildren: () => import('./pages/datvexe/datvexe.module').then(m => m.DatvexeModule) }
     ]
   },
