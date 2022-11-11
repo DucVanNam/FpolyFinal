@@ -18,7 +18,10 @@ const routes: Routes = [
     path: '', component: LayoutQuanLyComponent,
     children: [
       { path: 'quanlyxe', loadChildren: () => import('./pages/quanlyxe/quanlyxe.module').then(m => m.QuanLyXeModule) },
-      { path: 'quanlychuyendi', loadChildren: () => import('./pages/quanlychuyendi/quanlychuyendi.module').then(m => m.QuanLyChuyenDiModule) }
+      { path: 'quanlychuyendi', loadChildren: () => import('./pages/quanlychuyendi/quanlychuyendi.module').then(m => m.QuanLyChuyenDiModule) },
+      { path: 'quanlynhaxe', loadChildren: () => import('./pages/quanlynhaxe/quanlynhaxe.module').then(m => m.QuanLyNhaXeModule) },
+      { path: 'quanlylayout', loadChildren: () => import('./pages/quanlylayout/quanlylayout.module').then(m => m.QuanLyLayOutModule) },
+      { path: 'quanlytype', loadChildren: () => import('./pages/quanlytype/quanlytype.module').then(m => m.QuanLyTypeModule) }
     ]
   },
   

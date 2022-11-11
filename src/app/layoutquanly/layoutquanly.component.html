@@ -1,6 +1,6 @@
 <nz-layout>
     <nz-sider nzCollapsible [(nzCollapsed)]="isCollapsed" [nzTrigger]="null">
-      <div class="logo"></div>
+      <div class="logo"> <img style="height: 35px; padding-left: 70px;" nz-col [nzSpan]="20" src="../../assets/icon/logo-login-resize-removebg.png" alt=""></div>
       <ul nz-menu nzTheme="dark" nzMode="inline">
         <!-- <li routerLink="dashboard" nz-submenu nzTitle="Quản lý xe" nzIcon="car">
           <ul>
@@ -16,6 +16,18 @@
         <li nz-menu-item routerLink="quanlychuyendi">
           <span nz-icon nzType="car"></span>
           <span>Quản lý chuyến đi</span>
+        </li>
+        <li nz-menu-item routerLink="quanlynhaxe">
+          <span nz-icon nzType="user" nzTheme="outline"></span>
+          <span>Quản lý nhà xe</span>
+        </li>
+        <li nz-menu-item routerLink="quanlylayout">
+          <span nz-icon nzType="car"></span>
+          <span>Quản lý Layout </span>
+        </li>
+        <li nz-menu-item routerLink="quanlytype">
+          <span nz-icon nzType="car"></span>
+          <span>Quản lý Types </span>
         </li>
         <li nz-submenu nzTitle="Báo cáo" nzIcon="line-chart">
           <ul>
@@ -44,8 +56,8 @@
       </nz-header>
       <nz-content>
         <nz-breadcrumb>
-          <nz-breadcrumb-item>User</nz-breadcrumb-item>
-          <nz-breadcrumb-item>Bill</nz-breadcrumb-item>
+          <nz-breadcrumb-item>Admin</nz-breadcrumb-item>
+          <nz-breadcrumb-item>Quản lý</nz-breadcrumb-item>
         </nz-breadcrumb>
         <div class="inner-content">
             <router-outlet></router-outlet>

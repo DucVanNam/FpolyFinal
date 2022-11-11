@@ -14,26 +14,24 @@
       nzTheme="outline"></span>Import
     Excel</button>
   <button (click)="showModal()" nz-button nzType="primary" style="float: right; background-color: #10B981;"> <span
-      nz-icon nzType="plus" nzTheme="outline"></span>Thêm xe</button>
+      nz-icon nzType="plus" nzTheme="outline"></span>Thêm Layout</button>
 </div>
 <nz-table #basicTable [nzData]="listOfData">
   <thead>
     <tr>
-      <th>Tên nhà xe</th>
-      <th>Ngày di chuyển</th>
-      <th>Biển kiểm soát</th>
-      <th>Loại xe</th>
+      <th>Tên Layout</th>
+      <th>Value</th>
+      <th>NumberOfDeckers</th>
       <th>Action</th>
     </tr>
   </thead>
   <tbody>
     <tr *ngFor="let data of basicTable.data">
-      <td>{{ data.name }}</td>
-      <td>{{ data.ngaydichuyen }}</td>
-      <td>{{ data.bienso }}</td>
-      <td>{{ data.loaixe }}</td>
+      <td>{{ data.Name }}</td>
+      <td>{{ data.Value }}</td>
+      <td>{{ data.NumberOfDeckers }}</td>
       <td>
-        <a>Action一{{ data.name }}</a>
+        <a>Action一{{ data.Name }}</a>
         <nz-divider nzType="vertical"></nz-divider>
         <a style="color: red;"><span nz-icon nzType="edit" nzTheme="outline"></span></a>
         <nz-divider nzType="vertical"></nz-divider>
@@ -43,31 +41,29 @@
   </tbody>
 </nz-table>
 
-<nz-modal [(nzVisible)]="isVisible" nzTitle="Thêm thông tin xe" (nzOnCancel)="handleCancel()" (nzOnOk)="handleOk()">
+<nz-modal [(nzVisible)]="isVisible" nzTitle="Thêm thông Layout" (nzOnCancel)="handleCancel()" (nzOnOk)="handleOk()">
   <ng-container *nzModalContent>
     <nz-form-item>
-      <nz-form-control nzErrorTip="Vui lòng nhập lịch trình">
-        <nz-date-picker [(ngModel)]="date" style="text-align: center;  "></nz-date-picker>
-      </nz-form-control>
-    </nz-form-item>
-    <nz-form-item>
-      <nz-form-control nzErrorTip="Vui lòng nhập biểm kiểm soát!">
+      <nz-form-control nzErrorTip="Vui lòng nhập Name">
+        <nz-form-label [nzSpan]="7" nzRequired>Name </nz-form-label>
         <nz-input-group nzPrefixIcon="user" style="border-radius: 50px; ">
-          <input type="text" nz-input formControlName="userName" placeholder="Biển kiểm soát" />
+          <input type="text" nz-input formControlName="userName" placeholder="Name" />
         </nz-input-group>
       </nz-form-control>
     </nz-form-item>
     <nz-form-item>
-      <nz-form-control nzErrorTip="Vui lòng nhập màu xe!">
+      <nz-form-control nzErrorTip="Vui lòng nhập Value!">
+        <nz-form-label [nzSpan]="7" nzRequired>Value </nz-form-label>
         <nz-input-group nzPrefixIcon="user" style="border-radius: 50px;">
-          <input type="text" nz-input formControlName="userName" placeholder="Màu xe" />
+          <input type="text" nz-input formControlName="userName" placeholder="Value" />
         </nz-input-group>
       </nz-form-control>
     </nz-form-item>
     <nz-form-item>
-      <nz-form-control nzErrorTip="Vui lòng nhập biểm kiểm soát!">
+      <nz-form-control nzErrorTip="Vui lòng nhập NumberOfDeckers">
+        <nz-form-label [nzSpan]="7" nzRequired>NumberOfDeckers </nz-form-label>
         <nz-input-group nzPrefixIcon="user" style="border-radius: 50px;">
-          <input type="text" nz-input formControlName="userName" placeholder="Biển kiểm soát" />
+          <input type="text" nz-input formControlName="userName" placeholder="NumberOfDeckers" />
         </nz-input-group>
       </nz-form-control>
     </nz-form-item>
