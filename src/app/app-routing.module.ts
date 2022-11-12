@@ -5,12 +5,12 @@ import { LayoutQuanLyComponent } from './layoutquanly/layoutquanly.component';
 import { LoginComponent } from './login/login.component';
 
 const routes: Routes = [
-  { path: '', pathMatch: 'full', redirectTo: '/datvexe' },
+  { path: '', pathMatch: 'full', redirectTo: '/dashboard' },
   { path: 'login', component: LoginComponent },
   {
     path: '', component: LayoutComponent,
     children: [
-      //{ path: 'dashboard', loadChildren: () => import('./pages/dashboard/dashboard.module').then(m => m.DashboardModule) },
+      { path: 'dashboard', loadChildren: () => import('./pages/dashboard/dashboard.module').then(m => m.DashboardModule) },
       { path: 'datvexe', loadChildren: () => import('./pages/datvexe/datvexe.module').then(m => m.DatvexeModule) }
     ]
   },
@@ -24,9 +24,6 @@ const routes: Routes = [
       { path: 'quanlytype', loadChildren: () => import('./pages/quanlytype/quanlytype.module').then(m => m.QuanLyTypeModule) }
     ]
   },
-  
-  { path: '404-not-found', pathMatch: 'full', loadChildren: () => import('./error/error404/error404.module').then(m => m.Error404Module) },
-  { path: '**', redirectTo: '404-not-found' },
 ];
 @NgModule({
   imports: [RouterModule.forRoot(routes)],

@@ -1,46 +1,104 @@
-<div style="background-color: rgb(18, 172, 151); height: 100px;">
-<div style="padding-top: 30px; padding-left: 470px;">
-  <nz-input-group nzCompact style="width: 1000px;">
-    <div class="example-input">
-      <input required style="height: 40px;" placeholder='Chọn điểm đi' nz-input [(ngModel)]="inputValue"
-         [nzAutocomplete]="auto" (ngModelChange)="onChange($event)"/>
-      <nz-autocomplete [nzDataSource]="filteredOptions" #auto></nz-autocomplete>
-    </div>
-    <div class="example-input">
-      <input required [(ngModel)]="inputValue2"style="height: 40px;" placeholder='Chọn điểm đến' nz-input [nzAutocomplete]="auto" (ngModelChange)="onChange($event)"/>
-      <nz-autocomplete [nzDataSource]="filteredOptions" #auto></nz-autocomplete>
-    </div>
+<nz-carousel nzAutoPlay>
+<<<<<<< HEAD
+  <div nz-carousel-content>
     <div>
-      <nz-date-picker nzPlaceHolder="Chọn ngày" style="height: 40px; text-align: center; margin: 0;"
-        [(ngModel)]="date" nzFormat="dd/MM/yyyy"></nz-date-picker>
-    </div>
-    <div> 
+      <nz-input-group nzCompact style="margin: auto; position: fixed; top:25%; " >
+        <h1>OME - ĐEM ĐẾN SỰ CHUYÊN NGHIỆP VÀ SỰ TRẢI NGHIỆM TUYỆT VỜI </h1>
+      </nz-input-group>
+      <nz-input-group nzCompact style="margin: auto; position: fixed; top:45%; ">
+        <div class="example-input">
+          <input style="height: 40px;" placeholder='Chọn điểm đi' nz-input [(ngModel)]="inputValue"
+             [nzAutocomplete]="auto" (ngModelChange)="onChange($event)"/>
+          <nz-autocomplete [nzDataSource]="filteredOptions" #auto></nz-autocomplete>
+        </div>
+        <div class="example-input">
+          <input [(ngModel)]="inputValue2"style="height: 40px;" placeholder='Chọn điểm đến' nz-input [nzAutocomplete]="auto" (ngModelChange)="onChange($event)"/>
+          <nz-autocomplete [nzDataSource]="filteredOptions" #auto></nz-autocomplete>
+        </div>
+        <div>
+          <nz-date-picker nzPlaceHolder="Chọn ngày" style="height: 40px; text-align: center; margin: 0;"
+            [(ngModel)]="date" nzFormat="dd/MM/yyyy"></nz-date-picker>
+        </div>
+        <div> 
 
-      <button nz-button nzType="primary" nzSize="large" style="height: 40px; text-align: center; margin: 0;">
-        <span nzTheme="outline" style=" width: 170px; text-align: center; height: 50px;" (click)="getAllByRoute()">Tìm vé</span>
+          <button nz-button nzType="primary" nzSize="large">
+            <span nzTheme="outline" style=" width: 170px; text-align: center;" (click)="getAllByRoute()">Tìm vé</span>
+          </button>
+        </div>
+      </nz-input-group>
+=======
+<div nz-carousel-content >
+   <div>
+    <nz-input-group nzCompact style="margin: auto;">
+      <div class="example-input">
+        <input
+        style="height: 40px;"
+          placeholder='Chọn điểm đi'
+          nz-input
+          [(ngModel)]="inputValue"
+          (ngModelChange)="onChange($event)"
+          [nzAutocomplete]="auto"
+        />
+        <nz-autocomplete [nzDataSource]="filteredOptions" #auto></nz-autocomplete>
+      </div>
+      <div class="example-input">
+        <input
+          style="height: 40px;"
+          placeholder='Chọn điểm đến'
+          nz-input
+          [nzAutocomplete]="auto"
+        />
+        <nz-autocomplete [nzDataSource]="filteredOptions" #auto></nz-autocomplete>
+      </div>
+      <div>
+        <nz-date-picker nzPlaceHolder="Chọn ngày" style="height: 40px; text-align: center;" [(ngModel)]="date" (ngModelChange)="onChange($event)" nzFormat="dd/MM/yyyy"></nz-date-picker>
+      <button nz-button nzType="primary" nzSize="large">
+        <span nzTheme="outline" style=" width: 170px; text-align: center;" (click)="getAllByRoute()">Tìm vé</span>
       </button>
+>>>>>>> parent of 2b6f1fe (update-giaodien)
     </div>
-  </nz-input-group>
+    </nz-input-group>
+  </div>
 </div>
-</div>
+</nz-carousel>
+  
 
+
+  
+
+<<<<<<< HEAD
 
 
 <!-- <nz-modal [(nzVisible)]="isVisible" nzTitle="Thông tin đặt chuyến" (nzOnCancel)="handleCancel()" (nzOnOk)="handleOk()"
   nzWidth="1000px">
+=======
+<nz-modal [(nzVisible)]="isVisible" nzTitle="Thông tin đặt chuyến" (nzOnCancel)="handleCancel()" (nzOnOk)="handleOk()"  nzWidth="1000px">
+>>>>>>> parent of 2b6f1fe (update-giaodien)
   <ng-container *nzModalContent>
     <div nz-row>
 
 
       <div nz-col nzSpan="8">
-        <span style="font-size: 30px;" nz-icon nzType="border" nzTheme="outline"></span>
+        <span style="font-size: 30px;"
+        nz-icon
+        nzType="border"
+        nzTheme="outline"
+        ></span>
         <p>Ghế được chọn</p>
-
-        <span style="font-size: 30px;" class="xam" nz-icon nzType="close-square" nzTheme="outline"></span>
+      
+        <span style="font-size: 30px;" class="xam"
+        nz-icon
+        nzType="close-square"
+        nzTheme="outline"
+        ></span>
         <p>Ghế không được chọn</p>
-
-
-        <span style="font-size: 30px;" class="do" nz-icon nzType="border" nzTheme="outline"></span>
+      
+      
+        <span style="font-size: 30px;" class="do"
+        nz-icon
+        nzType="border"
+        nzTheme="outline"
+        ></span>
         <p>Ghế đang chọn</p>
       </div>
 
@@ -54,150 +112,374 @@
             </tr>
             <tr>
               <td>
-                <div [ngClass]="data2[0].trangthai == 2 ? 'disable' : ''" title="Ghế số 1" (click)="chuyenMau(0)">
-                  <span style="font-size: 30px;" nz-icon nzType="border" nzTheme="outline"
-                    *ngIf="data2[0].trangthai != 2" [ngClass]="data2[0].trangthai == 1 ? 'do' : 'xanh'"></span>
-                  <span style="font-size: 30px;" nz-icon nzType="close-square" nzTheme="outline"
-                    *ngIf="data2[0].trangthai == 2" class="xam"></span>
+                <div
+                  [ngClass]="data2[0].trangthai == 2 ? 'disable' : ''"
+                  title="Ghế số 1"
+                  (click)="chuyenMau(0)"
+                >
+                  <span style="font-size: 30px;"
+                    nz-icon
+                    nzType="border"
+                    nzTheme="outline"
+                    *ngIf="data2[0].trangthai != 2"
+                    [ngClass]="data2[0].trangthai == 1 ? 'do' : 'xanh'"
+                  ></span>
+                  <span style="font-size: 30px;"
+                    nz-icon
+                    nzType="close-square"
+                    nzTheme="outline"
+                    *ngIf="data2[0].trangthai == 2"
+                    class="xam"
+                  ></span>
                 </div>
               </td>
               <td>
-                <div [ngClass]="data2[1].trangthai == 2 ? 'disable' : ''" title="Ghế số 1" (click)="chuyenMau(1)">
-                  <span style="font-size: 30px;" nz-icon nzType="border" nzTheme="outline"
-                    *ngIf="data2[1].trangthai != 2" [ngClass]="data2[1].trangthai == 1 ? 'do' : 'xanh'"></span>
-                  <span style="font-size: 30px;" nz-icon nzType="close-square" nzTheme="outline"
-                    *ngIf="data2[1].trangthai == 2" class="xam"></span>
+                <div
+                  [ngClass]="data2[1].trangthai == 2 ? 'disable' : ''"
+                  title="Ghế số 1"
+                  (click)="chuyenMau(1)"
+                >
+                  <span style="font-size: 30px;"
+                    nz-icon
+                    nzType="border"
+                    nzTheme="outline"
+                    *ngIf="data2[1].trangthai != 2"
+                    [ngClass]="data2[1].trangthai == 1 ? 'do' : 'xanh'"
+                  ></span>
+                  <span style="font-size: 30px;"
+                    nz-icon
+                    nzType="close-square"
+                    nzTheme="outline"
+                    *ngIf="data2[1].trangthai == 2"
+                    class="xam"
+                  ></span>
                 </div>
               </td>
               <td>
-                <div [ngClass]="data2[2].trangthai == 2 ? 'disable' : ''" title="Ghế số 1" (click)="chuyenMau(2)">
-                  <span style="font-size: 30px;" nz-icon nzType="border" nzTheme="outline"
-                    *ngIf="data2[2].trangthai != 2" [ngClass]="data2[2].trangthai == 1 ? 'do' : 'xanh'"></span>
-                  <span style="font-size: 30px;" nz-icon nzType="close-square" nzTheme="outline"
-                    *ngIf="data2[2].trangthai == 2" class="xam"></span>
-                </div>
-              </td>
-            </tr>
-
-            <tr>
-              <td>
-                <div [ngClass]="data2[3].trangthai == 2 ? 'disable' : ''" title="Ghế số 1" (click)="chuyenMau(3)">
-                  <span style="font-size: 30px;" nz-icon nzType="border" nzTheme="outline"
-                    *ngIf="data2[3].trangthai != 2" [ngClass]="data2[3].trangthai == 1 ? 'do' : 'xanh'"></span>
-                  <span style="font-size: 30px;" nz-icon nzType="close-square" nzTheme="outline"
-                    *ngIf="data2[3].trangthai == 2" class="xam"></span>
-                </div>
-              </td>
-              <td>
-                <div [ngClass]="data2[4].trangthai == 2 ? 'disable' : ''" title="Ghế số 1" (click)="chuyenMau(4)">
-                  <span style="font-size: 30px;" nz-icon nzType="border" nzTheme="outline"
-                    *ngIf="data2[4].trangthai != 2" [ngClass]="data2[4].trangthai == 1 ? 'do' : 'xanh'"></span>
-                  <span style="font-size: 30px;" nz-icon nzType="close-square" nzTheme="outline"
-                    *ngIf="data2[4].trangthai == 2" class="xam"></span>
-                </div>
-              </td>
-              <td>
-                <div [ngClass]="data2[5].trangthai == 2 ? 'disable' : ''" title="Ghế số 1" (click)="chuyenMau(5)">
-                  <span style="font-size: 30px;" nz-icon nzType="border" nzTheme="outline"
-                    *ngIf="data2[5].trangthai != 2" [ngClass]="data2[5].trangthai == 1 ? 'do' : 'xanh'"></span>
-                  <span style="font-size: 30px;" nz-icon nzType="close-square" nzTheme="outline"
-                    *ngIf="data2[5].trangthai == 2" class="xam"></span>
-                </div>
-              </td>
-            </tr>
-
-            <tr>
-              <td>
-                <div [ngClass]="data2[6].trangthai == 2 ? 'disable' : ''" title="Ghế số 1" (click)="chuyenMau(6)">
-                  <span style="font-size: 30px;" nz-icon nzType="border" nzTheme="outline"
-                    *ngIf="data2[6].trangthai != 2" [ngClass]="data2[6].trangthai == 1 ? 'do' : 'xanh'"></span>
-                  <span style="font-size: 30px;" nz-icon nzType="close-square" nzTheme="outline"
-                    *ngIf="data2[6].trangthai == 2" class="xam"></span>
-                </div>
-              </td>
-              <td>
-                <div [ngClass]="data2[7].trangthai == 2 ? 'disable' : ''" title="Ghế số 1" (click)="chuyenMau(7)">
-                  <span style="font-size: 30px;" nz-icon nzType="border" nzTheme="outline"
-                    *ngIf="data2[7].trangthai != 2" [ngClass]="data2[7].trangthai == 1 ? 'do' : 'xanh'"></span>
-                  <span style="font-size: 30px;" nz-icon nzType="close-square" nzTheme="outline"
-                    *ngIf="data2[7].trangthai == 2" class="xam"></span>
-                </div>
-              </td>
-              <td>
-                <div [ngClass]="data2[8].trangthai == 2 ? 'disable' : ''" title="Ghế số 1" (click)="chuyenMau(8)">
-                  <span style="font-size: 30px;" nz-icon nzType="border" nzTheme="outline"
-                    *ngIf="data2[8].trangthai != 2" [ngClass]="data2[8].trangthai == 1 ? 'do' : 'xanh'"></span>
-                  <span style="font-size: 30px;" nz-icon nzType="close-square" nzTheme="outline"
-                    *ngIf="data2[8].trangthai == 2" class="xam"></span>
+                <div
+                  [ngClass]="data2[2].trangthai == 2 ? 'disable' : ''"
+                  title="Ghế số 1"
+                  (click)="chuyenMau(2)"
+                >
+                  <span style="font-size: 30px;"
+                    nz-icon
+                    nzType="border"
+                    nzTheme="outline"
+                    *ngIf="data2[2].trangthai != 2"
+                    [ngClass]="data2[2].trangthai == 1 ? 'do' : 'xanh'"
+                  ></span>
+                  <span style="font-size: 30px;"
+                    nz-icon
+                    nzType="close-square"
+                    nzTheme="outline"
+                    *ngIf="data2[2].trangthai == 2"
+                    class="xam"
+                  ></span>
                 </div>
               </td>
             </tr>
-
+      
             <tr>
               <td>
-                <div [ngClass]="data2[9].trangthai == 2 ? 'disable' : ''" title="Ghế số 1" (click)="chuyenMau(9)">
-                  <span style="font-size: 30px;" nz-icon nzType="border" nzTheme="outline"
-                    *ngIf="data2[9].trangthai != 2" [ngClass]="data2[9].trangthai == 1 ? 'do' : 'xanh'"></span>
-                  <span style="font-size: 30px;" nz-icon nzType="close-square" nzTheme="outline"
-                    *ngIf="data2[9].trangthai == 2" class="xam"></span>
+                <div
+                  [ngClass]="data2[3].trangthai == 2 ? 'disable' : ''"
+                  title="Ghế số 1"
+                  (click)="chuyenMau(3)"
+                >
+                  <span style="font-size: 30px;"
+                    nz-icon
+                    nzType="border"
+                    nzTheme="outline"
+                    *ngIf="data2[3].trangthai != 2"
+                    [ngClass]="data2[3].trangthai == 1 ? 'do' : 'xanh'"
+                  ></span>
+                  <span style="font-size: 30px;"
+                    nz-icon
+                    nzType="close-square"
+                    nzTheme="outline"
+                    *ngIf="data2[3].trangthai == 2"
+                    class="xam"
+                  ></span>
                 </div>
               </td>
               <td>
-                <div [ngClass]="data2[10].trangthai == 2 ? 'disable' : ''" title="Ghế số 1" (click)="chuyenMau(10)">
-                  <span style="font-size: 30px;" nz-icon nzType="border" nzTheme="outline"
-                    *ngIf="data2[10].trangthai != 2" [ngClass]="data2[10].trangthai == 1 ? 'do' : 'xanh'"></span>
-                  <span style="font-size: 30px;" nz-icon nzType="close-square" nzTheme="outline"
-                    *ngIf="data2[10].trangthai == 2" class="xam"></span>
+                <div
+                  [ngClass]="data2[4].trangthai == 2 ? 'disable' : ''"
+                  title="Ghế số 1"
+                  (click)="chuyenMau(4)"
+                >
+                  <span style="font-size: 30px;"
+                    nz-icon
+                    nzType="border"
+                    nzTheme="outline"
+                    *ngIf="data2[4].trangthai != 2"
+                    [ngClass]="data2[4].trangthai == 1 ? 'do' : 'xanh'"
+                  ></span>
+                  <span style="font-size: 30px;"
+                    nz-icon
+                    nzType="close-square"
+                    nzTheme="outline"
+                    *ngIf="data2[4].trangthai == 2"
+                    class="xam"
+                  ></span>
                 </div>
               </td>
               <td>
-                <div [ngClass]="data2[11].trangthai == 2 ? 'disable' : ''" title="Ghế số 1" (click)="chuyenMau(11)">
-                  <span style="font-size: 30px;" nz-icon nzType="border" nzTheme="outline"
-                    *ngIf="data2[11].trangthai != 2" [ngClass]="data2[11].trangthai == 1 ? 'do' : 'xanh'"></span>
-                  <span style="font-size: 30px;" nz-icon nzType="close-square" nzTheme="outline"
-                    *ngIf="data2[11].trangthai == 2" class="xam"></span>
+                <div
+                  [ngClass]="data2[5].trangthai == 2 ? 'disable' : ''"
+                  title="Ghế số 1"
+                  (click)="chuyenMau(5)"
+                >
+                  <span style="font-size: 30px;"
+                    nz-icon
+                    nzType="border"
+                    nzTheme="outline"
+                    *ngIf="data2[5].trangthai != 2"
+                    [ngClass]="data2[5].trangthai == 1 ? 'do' : 'xanh'"
+                  ></span>
+                  <span style="font-size: 30px;"
+                    nz-icon
+                    nzType="close-square"
+                    nzTheme="outline"
+                    *ngIf="data2[5].trangthai == 2"
+                    class="xam"
+                  ></span>
                 </div>
               </td>
             </tr>
-
+      
             <tr>
               <td>
-                <div [ngClass]="data2[12].trangthai == 2 ? 'disable' : ''" title="Ghế số 1" (click)="chuyenMau(12)">
-                  <span style="font-size: 30px;" nz-icon nzType="border" nzTheme="outline"
-                    *ngIf="data2[12].trangthai != 2" [ngClass]="data2[12].trangthai == 1 ? 'do' : 'xanh'"></span>
-                  <span style="font-size: 30px;" nz-icon nzType="close-square" nzTheme="outline"
-                    *ngIf="data2[12].trangthai == 2" class="xam"></span>
+                <div
+                  [ngClass]="data2[6].trangthai == 2 ? 'disable' : ''"
+                  title="Ghế số 1"
+                  (click)="chuyenMau(6)"
+                >
+                  <span style="font-size: 30px;"
+                    nz-icon
+                    nzType="border"
+                    nzTheme="outline"
+                    *ngIf="data2[6].trangthai != 2"
+                    [ngClass]="data2[6].trangthai == 1 ? 'do' : 'xanh'"
+                  ></span>
+                  <span style="font-size: 30px;"
+                    nz-icon
+                    nzType="close-square"
+                    nzTheme="outline"
+                    *ngIf="data2[6].trangthai == 2"
+                    class="xam"
+                  ></span>
                 </div>
               </td>
               <td>
-                <div [ngClass]="data2[13].trangthai == 2 ? 'disable' : ''" title="Ghế số 1" (click)="chuyenMau(13)">
-                  <span style="font-size: 30px;" nz-icon nzType="border" nzTheme="outline"
-                    *ngIf="data2[13].trangthai != 2" [ngClass]="data2[13].trangthai == 1 ? 'do' : 'xanh'"></span>
-                  <span style="font-size: 30px;" nz-icon nzType="close-square" nzTheme="outline"
-                    *ngIf="data2[13].trangthai == 2" class="xam"></span>
+                <div
+                  [ngClass]="data2[7].trangthai == 2 ? 'disable' : ''"
+                  title="Ghế số 1"
+                  (click)="chuyenMau(7)"
+                >
+                  <span style="font-size: 30px;"
+                    nz-icon
+                    nzType="border"
+                    nzTheme="outline"
+                    *ngIf="data2[7].trangthai != 2"
+                    [ngClass]="data2[7].trangthai == 1 ? 'do' : 'xanh'"
+                  ></span>
+                  <span style="font-size: 30px;"
+                    nz-icon
+                    nzType="close-square"
+                    nzTheme="outline"
+                    *ngIf="data2[7].trangthai == 2"
+                    class="xam"
+                  ></span>
                 </div>
               </td>
               <td>
-                <div [ngClass]="data2[14].trangthai == 2 ? 'disable' : ''" title="Ghế số 1" (click)="chuyenMau(14)">
-                  <span style="font-size: 30px;" nz-icon nzType="border" nzTheme="outline"
-                    *ngIf="data2[14].trangthai != 2" [ngClass]="data2[14].trangthai == 1 ? 'do' : 'xanh'"></span>
-                  <span style="font-size: 30px;" nz-icon nzType="close-square" nzTheme="outline"
-                    *ngIf="data2[14].trangthai == 2" class="xam"></span>
+                <div
+                  [ngClass]="data2[8].trangthai == 2 ? 'disable' : ''"
+                  title="Ghế số 1"
+                  (click)="chuyenMau(8)"
+                >
+                  <span style="font-size: 30px;"
+                    nz-icon
+                    nzType="border"
+                    nzTheme="outline"
+                    *ngIf="data2[8].trangthai != 2"
+                    [ngClass]="data2[8].trangthai == 1 ? 'do' : 'xanh'"
+                  ></span>
+                  <span style="font-size: 30px;"
+                    nz-icon
+                    nzType="close-square"
+                    nzTheme="outline"
+                    *ngIf="data2[8].trangthai == 2"
+                    class="xam"
+                  ></span>
+                </div>
+              </td>
+            </tr>
+      
+            <tr>
+              <td>
+                <div
+                  [ngClass]="data2[9].trangthai == 2 ? 'disable' : ''"
+                  title="Ghế số 1"
+                  (click)="chuyenMau(9)"
+                >
+                  <span style="font-size: 30px;"
+                    nz-icon
+                    nzType="border"
+                    nzTheme="outline"
+                    *ngIf="data2[9].trangthai != 2"
+                    [ngClass]="data2[9].trangthai == 1 ? 'do' : 'xanh'"
+                  ></span>
+                  <span style="font-size: 30px;"
+                    nz-icon
+                    nzType="close-square"
+                    nzTheme="outline"
+                    *ngIf="data2[9].trangthai == 2"
+                    class="xam"
+                  ></span>
                 </div>
               </td>
               <td>
-                <div [ngClass]="data2[15].trangthai == 2 ? 'disable' : ''" title="Ghế số 1" (click)="chuyenMau(15)">
-                  <span style="font-size: 30px;" nz-icon nzType="border" nzTheme="outline"
-                    *ngIf="data2[15].trangthai != 2" [ngClass]="data2[15].trangthai == 1 ? 'do' : 'xanh'"></span>
-                  <span style="font-size: 30px;" nz-icon nzType="close-square" nzTheme="outline"
-                    *ngIf="data2[15].trangthai == 2" class="xam"></span>
+                <div
+                  [ngClass]="data2[10].trangthai == 2 ? 'disable' : ''"
+                  title="Ghế số 1"
+                  (click)="chuyenMau(10)"
+                >
+                  <span style="font-size: 30px;"
+                    nz-icon
+                    nzType="border"
+                    nzTheme="outline"
+                    *ngIf="data2[10].trangthai != 2"
+                    [ngClass]="data2[10].trangthai == 1 ? 'do' : 'xanh'"
+                  ></span>
+                  <span style="font-size: 30px;"
+                    nz-icon
+                    nzType="close-square"
+                    nzTheme="outline"
+                    *ngIf="data2[10].trangthai == 2"
+                    class="xam"
+                  ></span>
+                </div>
+              </td>
+              <td>
+                <div
+                  [ngClass]="data2[11].trangthai == 2 ? 'disable' : ''"
+                  title="Ghế số 1"
+                  (click)="chuyenMau(11)"
+                >
+                  <span style="font-size: 30px;"
+                    nz-icon
+                    nzType="border"
+                    nzTheme="outline"
+                    *ngIf="data2[11].trangthai != 2"
+                    [ngClass]="data2[11].trangthai == 1 ? 'do' : 'xanh'"
+                  ></span>
+                  <span style="font-size: 30px;"
+                    nz-icon
+                    nzType="close-square"
+                    nzTheme="outline"
+                    *ngIf="data2[11].trangthai == 2"
+                    class="xam"
+                  ></span>
+                </div>
+              </td>
+            </tr>
+      
+            <tr>
+              <td>
+                <div
+                  [ngClass]="data2[12].trangthai == 2 ? 'disable' : ''"
+                  title="Ghế số 1"
+                  (click)="chuyenMau(12)"
+                >
+                  <span style="font-size: 30px;"
+                    nz-icon
+                    nzType="border"
+                    nzTheme="outline"
+                    *ngIf="data2[12].trangthai != 2"
+                    [ngClass]="data2[12].trangthai == 1 ? 'do' : 'xanh'"
+                  ></span>
+                  <span style="font-size: 30px;"
+                    nz-icon
+                    nzType="close-square"
+                    nzTheme="outline"
+                    *ngIf="data2[12].trangthai == 2"
+                    class="xam"
+                  ></span>
+                </div>
+              </td>
+              <td>
+                <div
+                  [ngClass]="data2[13].trangthai == 2 ? 'disable' : ''"
+                  title="Ghế số 1"
+                  (click)="chuyenMau(13)"
+                >
+                  <span style="font-size: 30px;"
+                    nz-icon
+                    nzType="border"
+                    nzTheme="outline"
+                    *ngIf="data2[13].trangthai != 2"
+                    [ngClass]="data2[13].trangthai == 1 ? 'do' : 'xanh'"
+                  ></span>
+                  <span style="font-size: 30px;"
+                    nz-icon
+                    nzType="close-square"
+                    nzTheme="outline"
+                    *ngIf="data2[13].trangthai == 2"
+                    class="xam"
+                  ></span>
+                </div>
+              </td>
+              <td>
+                <div
+                  [ngClass]="data2[14].trangthai == 2 ? 'disable' : ''"
+                  title="Ghế số 1"
+                  (click)="chuyenMau(14)"
+                >
+                  <span style="font-size: 30px;"
+                    nz-icon
+                    nzType="border"
+                    nzTheme="outline"
+                    *ngIf="data2[14].trangthai != 2"
+                    [ngClass]="data2[14].trangthai == 1 ? 'do' : 'xanh'"
+                  ></span>
+                  <span style="font-size: 30px;"
+                    nz-icon
+                    nzType="close-square"
+                    nzTheme="outline"
+                    *ngIf="data2[14].trangthai == 2"
+                    class="xam"
+                  ></span>
+                </div>
+              </td>
+              <td>
+                <div
+                  [ngClass]="data2[15].trangthai == 2 ? 'disable' : ''"
+                  title="Ghế số 1"
+                  (click)="chuyenMau(15)"
+                >
+                  <span style="font-size: 30px;"
+                    nz-icon
+                    nzType="border"
+                    nzTheme="outline"
+                    *ngIf="data2[15].trangthai != 2"
+                    [ngClass]="data2[15].trangthai == 1 ? 'do' : 'xanh'"
+                  ></span>
+                  <span style="font-size: 30px;"
+                    nz-icon
+                    nzType="close-square"
+                    nzTheme="outline"
+                    *ngIf="data2[15].trangthai == 2"
+                    class="xam"
+                  ></span>
                 </div>
               </td>
             </tr>
           </tbody>
         </table>
       </div>
-
+      
       <div nz-col nzSpan="8">
         <nz-form-item>
           <nz-form-control nzErrorTip="Vui lòng nhập họ tên của bạn!">
@@ -238,7 +520,7 @@
     <div nz-col [nzSpan]="12" *ngFor="let item of datas">
       <nz-list-item>
         <nz-card>
-          <div nz-row [nzGutter]="16">
+           <div nz-row [nzGutter]="16">
             <div nz-col class="gutter-row" [nzSpan]="8">
               <div class="inner-box">
                 <img style="height: 130px;" nz-col [nzSpan]="20" alt="example" src="../../assets/icon/xe16.jpg" />
@@ -261,21 +543,25 @@
                 <h3>Giá vé : {{item.ticketPrice | currency: "VND"}}</h3>
                 <p>Còn {{ item.emptySeats }} chỗ trống</p>
                 <div>
+<<<<<<< HEAD
                   <a (click)="thongtin(item)">Thông tin chi tiết</a>
                 </div>
+=======
+                <button nz-button nzType="primary" (click)="test(item)">
+                  Chọn chuyến
+                </button>
+              </div>
+>>>>>>> parent of 2b6f1fe (update-giaodien)
               </div>
             </div>
-          </div>
+           </div>
         </nz-card>
       </nz-list-item>
     </div>
   </div>
 </nz-list>
-  <nz-empty *ngIf="datas?.length ==0"></nz-empty>
 
-
-
-
+<<<<<<< HEAD
 <nz-modal style="resize: none; height: 700px;" [(nzVisible)]="isVisible2" nzTitle="Mua vé" (nzOnCancel)="handleCancel()" nzWidth="700px" [nzFooter]=null>
 <nz-steps [nzCurrent]="current">
   <nz-step nzTitle="Chỗ mong muốn"></nz-step>
@@ -488,17 +774,18 @@
       <p>Ghế đang chọn</p>
     </div>
 
-    <div class="coach">
-      <div nz-row [nzGutter]="16" nz-col nzSpan="12" style="padding: 20px;">
+    <div>
+      <div nz-row [nzGutter]="16" nz-col nzSpan="12">
         <table>
-          <tbody *ngIf="datatest[0]?.seats?.length == 4">
+          <tbody *ngIf="datatest[0]?.seats?.length == 45">
             <tr>
               <td>
                 <img src="../../assets/icon/volang.png" alt="" style="width: 30px ; height: 30px;">
               </td>
             </tr>
-            <tr *ngFor="let data of datatest[0]?.seats; let i = index">
-              <td
+            <tr *ngFor="let data of datatest[0]?.seats; let i = index" >
+              <td>
+                <div 
                  [ngClass]="data.status == 0 ? 'disable' : ''" title="Ghế số: {{data.seatNo}} - Giá: {{data.customPrice}}" (click)="chuyenMau(data)">
                   <svg *ngIf="data.status != 0" [ngClass]="data.status == 1 ? 'khongchuyen' : 'chuyenxanh'" version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
                   viewBox="0 0 512 512" style="enable-background:new 0 0 512 512;" xml:space="preserve">
@@ -632,21 +919,18 @@
               <g>
               </g>
               </svg>
+                </div>
               </td>
             </tr>
           </tbody>
-          <tbody *ngIf="datatest[0]?.seats?.length != 4">
-               <h3>Chuyến này không hỗ trợ chọn chỗ</h3>
-               <div>
-                <p>Số lượng ghế:</p>
-                <button nz-button nzType="text" nzShape="circle" (click)="tru()">
-                  -
-                </button>
-                <span>{{count}}</span>
-                <button nz-button nzType="text" nzShape="circle" (click)="cong()">
-                  +
-                </button>
-               </div>
+          <tbody *ngIf="datatest[0]?.seats?.length != 45"  style="text-align: center;">
+              <h3>Chuyến này không hỗ trợ chọn chỗ</h3>
+              <div>
+                <p>Số lượng khách:</p>
+                   <button nz-button nzType="text" nzShape="circle" (click)="tru()">-</button>
+                   <span>{{count}}</span>
+                   <button nz-button nzType="text" nzShape="circle" (click)="cong()">+</button>  
+              </div>
           </tbody>
         </table>
       </div>
@@ -654,7 +938,6 @@
 
   </div>
 </div>
-
 <!-- <div *ngIf = "index === 1" class="steps-content">
   <div nz-row>
     <div nz-col nzSpan="8">
@@ -671,41 +954,32 @@
     </div>
   </div>
 </div> -->
-
 <div *ngIf = "index === 1" class="steps-content">
-  <div style="width: 300px; margin: auto;">
-    <form nz-form [formGroup]="validateForm">
-      <nz-form-item>
-        <nz-form-control nzErrorTip="Vui lòng nhập họ tên của bạn!">
-          <nz-input-group nzPrefixIcon="user">
-            <input [(ngModel)] = "hoTen" formControlName="name" type="text" nz-input placeholder="Họ và tên người đi" />
-          </nz-input-group>
-        </nz-form-control>
-      </nz-form-item>
-      <nz-form-item>
-        <nz-form-control nzErrorTip="Vui lòng nhập email!">
-          <nz-input-group nzPrefixIcon="mail">
-            <input [(ngModel)] = "email" formControlName="email" type="text" nz-input placeholder="Email để nhận thông tin vé" />
-          </nz-input-group>
-        </nz-form-control>
-      </nz-form-item>
-      <nz-form-item>
-        <nz-form-control nzErrorTip="Vui lòng nhập số điện thoại!">
-          <nz-input-group nzPrefixIcon="phone">
-            <input [(ngModel)] = "soDienThoai" formControlName="phone" type="text" nz-input placeholder="Số điện thoại" />
-          </nz-input-group>
-        </nz-form-control>
-      </nz-form-item>
-      <nz-form-item>
-        <nz-form-control>
-          <nz-input-group nzPrefixIcon="form">
-            <input type="text" nz-input placeholder="Ghi chú" />
-          </nz-input-group>
-        </nz-form-control>
-      </nz-form-item>
-    </form>
-
-  </div>
+  <div  style="width: 300px; margin: auto;">
+  <form nz-form [formGroup]="validateForm" class="login-form">
+    <nz-form-item>
+      <nz-form-control nzErrorTip="Vui lòng nhập họ tên!">
+        <nz-input-group nzPrefixIcon="user">
+          <input type="text" nz-input formControlName="name" placeholder="Nhập họ tên" />
+        </nz-input-group>
+      </nz-form-control>
+    </nz-form-item>
+    <nz-form-item>
+      <nz-form-control nzErrorTip="Vui lòng nhập số điện thoại!">
+        <nz-input-group nzPrefixIcon="user">
+          <input type="text" nz-input formControlName="phone" placeholder="Nhập số điện thoại" />
+        </nz-input-group>
+      </nz-form-control>
+    </nz-form-item>
+    <nz-form-item>
+      <nz-form-control nzErrorTip="Vui lòng nhập email!">
+        <nz-input-group nzPrefixIcon="user">
+          <input type="text" nz-input formControlName="email" placeholder="Nhập email để nhận thông tin vé" />
+        </nz-input-group>
+      </nz-form-control>
+    </nz-form-item>
+  </form>
+</div>
 </div>
 <div class="steps-action">
   <button nz-button nzType="default" (click)="pre()" *ngIf="current > 0">
@@ -744,3 +1018,5 @@
 </nz-modal>
 
 
+=======
+>>>>>>> parent of 2b6f1fe (update-giaodien)
