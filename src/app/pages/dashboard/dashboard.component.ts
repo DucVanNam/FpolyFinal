@@ -1,10 +1,14 @@
 import { Component, OnInit } from '@angular/core';
-interface Person {
-  key: string;
-  name: string;
-  bienso: string;
-  loaixe: string;
-  ngaydichuyen: string;
+import { Router } from '@angular/router';
+import { DashboardService } from './dashboard.service';
+interface IAllByRoute{
+  coachOwner: string;
+  emptySeats: number;
+  from: string;
+  to: string;
+  numberOfSeats: number;
+  ticketPrice: string;
+  schedule: string;
 }
 @Component({
   selector: 'app-datvexe',
@@ -13,5 +17,12 @@ interface Person {
 })
 
 export class DashboardComponent{
+  datas:IAllByRoute[]=[];
+  
+  constructor(private routeService : DashboardService, public router: Router,){
 
+  }
+  getAllByRoute(){
+    this.router.navigate(['/datvexe'])
+  }
 }

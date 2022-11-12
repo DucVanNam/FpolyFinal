@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { DatVeXeService } from './datvexe.service';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { NzModalService } from 'ng-zorro-antd/modal';
 interface IAllByRoute{
@@ -69,6 +69,7 @@ export class DatvexeComponent implements OnInit{
   //điểm đến
   inputValue2?: string;
   filteredOptions: string[] = [];
+  count = 0;
   options = ['Hà Nội', 'Lạng Sơn', 'Yên Bái','Quảng Ninh','Hải Dương','Hải Phòng','TP Hồ Chí Minh','Bến Tre',
   'An Giang', 'Bà Rịa - Vũng Tàu', 'Bắc Giang','Bắc Kạn','Bạc Liêu','Bắc Ninh','Bình Định','Bình Dương','Bình Phức',
   'Bình Thuận','Cà Mau','Cần Thơ','Cao Bằng','Đà Nẵng','Đắk Lắk','Đắk Nông','Điện Biên','Đồng Nai','Đồng Tháp'
@@ -78,7 +79,7 @@ export class DatvexeComponent implements OnInit{
 ];
 
    
-  constructor(private routeService : DatVeXeService, public router: Router, private modal: NzModalService, public fb: FormBuilder ) {
+  constructor(private routeService : DatVeXeService, public router: Router, private modal: NzModalService, public fb: FormBuilder) {
     
     this.filteredOptions = this.options; 
   }
@@ -90,6 +91,14 @@ export class DatvexeComponent implements OnInit{
       email:[null,[Validators.required]],
     })
   }
+  tru(){
+    if(this.count >0){
+      this.count--;
+    }
+  }
+  cong(){
+    this.count++;
+  }
 
   chuyenMau(item: any) {
     if (item.status == 1){
@@ -99,12 +108,10 @@ export class DatvexeComponent implements OnInit{
     else{
       item.status = 1;
     }
-
     if(this.data.length != 0){
       for(let i = 0; i<this.data.length; i++){
         if(item.id == this.data[i].id && item.status == 1){
            this.data = this.data.filter(x => x.id != this.data[i].id)
-           console.log('chon', this.data)
            this.totalPaymentAmount -= item.customPrice;
            break;
         }
@@ -112,7 +119,6 @@ export class DatvexeComponent implements OnInit{
           this.totalPaymentAmount += item.customPrice;
           this.isHienthi = true;
           this.data.push(item);
-          console.log('chon', this.data)
           break;
         }
       }
@@ -143,20 +149,30 @@ export class DatvexeComponent implements OnInit{
     this.isVisible2 = false;
     this.current = 0;
     this.index = 0;
+    this.count = 0;
+    this.data = [];
   }
   onChange(value: string): void {
     this.filteredOptions = this.options.filter(option => option.toLowerCase().indexOf(value.toLowerCase()) !== -1);
   }
   
   getAllByRoute(){
-    const params ={
-      from : this.inputValue,
-      to: this.inputValue2,
-      departuretime: this.date
+    if(this.inputValue == '' || this.inputValue2 == '' || this.date == null){
+      this.modal.error({
+        nzTitle: 'Lỗi',
+        nzContent: 'Vui lòng nhập đầy đủ thông tin tìm kiếm'
+      })
     }
-    this.routeService.getAllByRoute(params).subscribe((res: any)=>{
-       this.datas = res;
-    })
+    else{
+      const params ={
+        from : this.inputValue,
+        to: this.inputValue2,
+        departuretime: this.date
+      }
+      this.routeService.getAllByRoute(params).subscribe((res: any)=>{
+         this.datas = res;
+      })
+    }
   }
 
   datve(item: any) {
@@ -196,10 +212,10 @@ export class DatvexeComponent implements OnInit{
   }
 
   next(): void {
-    if(this.data.length == 0){
+    if(this.data.length == 0 && this.count == 0){
       this.modal.error({
         nzTitle: 'Lỗi',
-        nzContent: 'Vui lòng chọn ít nhất 1 chỗ ngồi'
+        nzContent: 'Vui lòng chọn ít nhất 1 ghế'
       })
     }
     else{

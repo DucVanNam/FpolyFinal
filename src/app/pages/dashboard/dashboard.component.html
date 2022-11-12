@@ -11,26 +11,10 @@
                                     </div>
                                 </nz-input-group>
                                 <nz-input-group nzCompact style="margin-bottom: 30px;">
-                                    <div class="example-input">
-                                        <input style="height: 50px;" placeholder='Chọn điểm đi' nz-input
-                                            [nzAutocomplete]="auto" />
-                                        <nz-autocomplete #auto></nz-autocomplete>
-                                    </div>
-                                    <div class="example-input">
-                                        <input style="height: 50px;" placeholder='Chọn điểm đến' nz-input
-                                            [nzAutocomplete]="auto" />
-                                        <nz-autocomplete #auto></nz-autocomplete>
-                                    </div>
                                     <div>
-                                        <nz-date-picker nzPlaceHolder="Chọn ngày"
-                                            style="height: 50px; text-align: center; margin: 0;" nzFormat="dd/MM/yyyy">
-                                        </nz-date-picker>
-                                    </div>
-                                    <div>
-
                                         <button style="height: 50px;" nz-button nzType="primary" nzSize="large">
                                             <span nzTheme="outline"
-                                                style=" width: 170px; text-align: center;">Tìm vé</span>
+                                                style=" width: 170px; text-align: center;" (click)="getAllByRoute()">Tìm chuyến đi ngay</span>
                                         </button>
                                     </div>
                                 </nz-input-group>
