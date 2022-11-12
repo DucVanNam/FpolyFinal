@@ -1,10 +1,11 @@
+<div>
 <div class="search">
-  <nz-input-group nzSearch nzSize="large" [nzAddOnAfter]="suffixButton" style=" border-radius: 50px;">
-    <input type="text" nz-input placeholder="Tìm kiếm" />
+  <nz-input-group nzSearch nzSize="large" [nzSuffix]="suffixIconSearch" style=" border-radius: 50px;">
+    <input style="border-radius: 50px;" type="text" nz-input placeholder="Tìm kiếm" />
   </nz-input-group>
-  <ng-template #suffixButton>
-    <button nz-button nzType="primary" nzSize="large" nzSearch>Search</button>
-  </ng-template> 
+  <ng-template #suffixIconSearch>
+    <a><span nz-icon nzType="search"></span></a>
+  </ng-template>
 </div>
 <div>
   <button nz-button nzType="primary" style="float: right; background-color: #4f46e5; "> <span nz-icon nzType="file"
@@ -15,6 +16,7 @@
     Excel</button>
   <button (click)="showModal()" nz-button nzType="primary" style="float: right; background-color: #10B981;"> <span
       nz-icon nzType="plus" nzTheme="outline"></span>Thêm Layout</button>
+</div>
 </div>
 <nz-table #basicTable [nzData]="listOfData">
   <thead>
@@ -27,27 +29,27 @@
   </thead>
   <tbody>
     <tr *ngFor="let data of basicTable.data">
-      <td>{{ data.Name }}</td>
-      <td>{{ data.Value }}</td>
-      <td>{{ data.NumberOfDeckers }}</td>
+      <td>{{ data.name }}</td>
+      <td>{{ data.value }}</td>
+      <td>{{ data.numberOfDeckers }}</td>
       <td>
-        <a>Action一{{ data.Name }}</a>
         <nz-divider nzType="vertical"></nz-divider>
-        <a style="color: red;"><span nz-icon nzType="edit" nzTheme="outline"></span></a>
+        <a (click)="updateLayout(data)" style="color: red;"><span nz-icon nzType="edit" nzTheme="outline"></span></a>
         <nz-divider nzType="vertical"></nz-divider>
-        <a><span nz-icon nzType="delete" nzTheme="outline"></span></a>
+        <a (click)="delete(data)"><span nz-icon nzType="delete" nzTheme="outline"></span></a>
       </td>
     </tr>
   </tbody>
 </nz-table>
 
-<nz-modal [(nzVisible)]="isVisible" nzTitle="Thêm thông Layout" (nzOnCancel)="handleCancel()" (nzOnOk)="handleOk()">
+<nz-modal [(nzVisible)]="isVisible" nzTitle="Thêm thông Layout" (nzOnCancel)="handleCancel()" (nzOnOk)="iscreup ? create() : update()">
   <ng-container *nzModalContent>
+    <form nz-form [formGroup]="validateForm">
     <nz-form-item>
-      <nz-form-control nzErrorTip="Vui lòng nhập Name">
-        <nz-form-label [nzSpan]="7" nzRequired>Name </nz-form-label>
+      <nz-form-control nzErrorTip="Vui lòng nhập tên">
+        <nz-form-label [nzSpan]="7" nzRequired>Name</nz-form-label>
         <nz-input-group nzPrefixIcon="user" style="border-radius: 50px; ">
-          <input type="text" nz-input formControlName="userName" placeholder="Name" />
+          <input [(ngModel)]="listOfFormDto.name" type="text" nz-input formControlName="name" placeholder="Name" />
         </nz-input-group>
       </nz-form-control>
     </nz-form-item>
@@ -55,7 +57,7 @@
       <nz-form-control nzErrorTip="Vui lòng nhập Value!">
         <nz-form-label [nzSpan]="7" nzRequired>Value </nz-form-label>
         <nz-input-group nzPrefixIcon="user" style="border-radius: 50px;">
-          <input type="text" nz-input formControlName="userName" placeholder="Value" />
+          <input [(ngModel)]="listOfFormDto.value" type="text" nz-input formControlName="value" placeholder="Value" />
         </nz-input-group>
       </nz-form-control>
     </nz-form-item>
@@ -63,9 +65,10 @@
       <nz-form-control nzErrorTip="Vui lòng nhập NumberOfDeckers">
         <nz-form-label [nzSpan]="7" nzRequired>NumberOfDeckers </nz-form-label>
         <nz-input-group nzPrefixIcon="user" style="border-radius: 50px;">
-          <input type="text" nz-input formControlName="userName" placeholder="NumberOfDeckers" />
+          <input [(ngModel)]="listOfFormDto.numberOfDeckers" type="text" nz-input formControlName="numberofdeckers" placeholder="NumberOfDeckers" />
         </nz-input-group>
       </nz-form-control>
     </nz-form-item>
+  </form>
   </ng-container>
 </nz-modal>
