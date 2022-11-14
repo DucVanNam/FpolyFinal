@@ -14,8 +14,8 @@ export class QuanLyLayoutService extends ServiceBaseService{
  deleteLayout(id: any){
   return this.delete(`api/Layout/Delete/${id}`);
 }
-update(params: any){
-  return this.put(`/api/Layout/Update/${params.id}`, params);
+update(params: any, id: any){
+  return this.put(`api/Layout/Update/${id}`, params);
 }
 
 }

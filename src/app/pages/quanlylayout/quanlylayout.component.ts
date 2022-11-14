@@ -45,6 +45,9 @@ export class QuanlylayoutComponent implements OnInit {
   successDeleteMessage(): void {
     this.message.create('success', 'Xóa bản ghi thành công');
   }
+  successUpdateMessage(): void {
+    this.message.create('success', 'Sửa bản ghi thành công');
+  }
   errorMessage(): void {
     this.message.create('error', 'Có lỗi xảy ra trong quá trình tạo');
   }
@@ -111,10 +114,26 @@ delete(record: any){
 }
 
 update(){
-
+  let params = {
+    name: this.listOfFormDto.name,
+    value: this.listOfFormDto.value,
+    numberOfDeckers: this.listOfFormDto.numberOfDeckers,
+  }
+  this.layoutService.update(params, this.listOfFormDto.id).subscribe((res: any)=>{
+    this.successUpdateMessage();
+    this.handleCancel();
+    this.getall();
+ })
 }
 
 updateLayout(item: any){
+  this.iscreup = false
+  this.listOfFormDto.id = item.id;
+  this.listOfFormDto.name = item.name;
+  this.listOfFormDto.numberOfDeckers = item.numberOfDeckers;
+  this.listOfFormDto.value = item.value;
+  this.isVisible = true;
+  console.log('name', this.listOfFormDto.name);
   
 }
 
