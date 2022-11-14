@@ -5,8 +5,14 @@ import { ServiceBaseService } from 'src/app/services/service-base.service';
   providedIn: 'root'
 })
 export class QuanLyTypeService extends ServiceBaseService{
- getAllByRoute(params: any){
-    return this.post(`api/Coach/GetAllByRoute`, params);
+ getAll(){
+    return this.get(`api/Type`);
  }
+ getInfoForCreateType(){
+  return this.get(`api/Type/info`);
+}
+create(params: any){
+  return this.post(`api/Type/create`, params);
+}
 
 }

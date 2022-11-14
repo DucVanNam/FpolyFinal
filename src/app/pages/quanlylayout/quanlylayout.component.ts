@@ -114,16 +114,26 @@ delete(record: any){
 }
 
 update(){
-  let params = {
-    name: this.listOfFormDto.name,
-    value: this.listOfFormDto.value,
-    numberOfDeckers: this.listOfFormDto.numberOfDeckers,
+  if(this.validateForm.valid){
+    let params = {
+      name: this.listOfFormDto.name,
+      value: this.listOfFormDto.value,
+      numberOfDeckers: this.listOfFormDto.numberOfDeckers,
+    }
+    this.layoutService.update(params, this.listOfFormDto.id).subscribe((res: any)=>{
+      this.successUpdateMessage();
+      this.handleCancel();
+      this.getall();
+   })
   }
-  this.layoutService.update(params, this.listOfFormDto.id).subscribe((res: any)=>{
-    this.successUpdateMessage();
-    this.handleCancel();
-    this.getall();
- })
+  else{
+    Object.values(this.validateForm.controls).forEach(control =>{
+      if(control.invalid){
+        control.markAsDirty();
+        control.updateValueAndValidity({onlySelf: true});
+      }
+    });
+  }
 }
 
 updateLayout(item: any){
