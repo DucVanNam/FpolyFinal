@@ -99,6 +99,7 @@ export class DatvexeComponent implements OnInit{
       phone: [null, [Validators.required]],
       email: [null, [Validators.required]],
     });
+    console.log(this.datatest);
   }
   
 
@@ -181,15 +182,14 @@ export class DatvexeComponent implements OnInit{
     const params ={
       coachId: item.id
     }
-    if (this.validateForm.valid) {
-      console.log('submit', this.validateForm.value);
-    }
-
+    // if (this.validateForm.valid) {
+    //   console.log('submit', this.validateForm.value);
+    // }
     this.routeService.getDetailByRoute(params).subscribe((res: any)=>{
       this.datatest = res;
       this.radioValue = item.pickups[0].id,
       this.radioValue2 = item.dropOffs[0].id,
-      console.log('data', this.datatest);
+      console.log("aaa", this.datatest);
 
    })
     this.isVisible2 = true;
