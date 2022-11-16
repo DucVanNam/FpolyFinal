@@ -56,78 +56,82 @@
 <nz-modal [(nzVisible)]="isVisible" nzTitle="Thêm Nhà Xe" (nzOnCancel)="handleCancel()" (nzOnOk)="iscreup ? create() : update()">
   <ng-container *nzModalContent>
     <form nz-form [formGroup]="validateForm">
-    <nz-form-item>
-      <nz-form-control nzErrorTip="Vui lòng nhập FirstName !">
-          <nz-form-label [nzSpan]="7" nzRequired>FirstName</nz-form-label>
-          <nz-input-group nzPrefixIcon="user" style="border-radius: 50px; ">
-            <input [(ngModel)]="listOfFormDto.firstName" type="text" nz-input formControlName="firstName" placeholder="FirstName" />
-          </nz-input-group>
-      </nz-form-control>
-    </nz-form-item>
-    <nz-form-item>
-      <nz-form-control nzErrorTip="Vui lòng nhập LastName!">
-          <nz-form-label [nzSpan]="7" nzRequired>LastName</nz-form-label>
-          <nz-input-group nzPrefixIcon="user" style="border-radius: 50px; ">
-            <input [(ngModel)]="listOfFormDto.lastName" type="text" nz-input formControlName="lastName" placeholder="LastName" />
-          </nz-input-group>
-      </nz-form-control>
-    </nz-form-item>
-    <nz-form-item>
-      <nz-form-control nzErrorTip="Vui lòng nhập DOB!">
-          <nz-form-label [nzSpan]="7" nzRequired>DOB</nz-form-label>
-          <nz-input-group nzPrefixIcon="user" style="border-radius: 50px; ">
-            <input [(ngModel)]="listOfFormDto.dateOfBirth" type="text" nz-input formControlName="dateOfBirth" placeholder="dateOfBirth" />
-          </nz-input-group>
-      </nz-form-control>
-    </nz-form-item>
-    <nz-form-item>
-      <nz-form-control nzErrorTip="Vui lòng nhập PhoneNumber!">
-          <nz-form-label [nzSpan]="7" nzRequired>PhoneNumber</nz-form-label>
-          <nz-input-group nzPrefixIcon="user" style="border-radius: 50px; ">
-            <input [(ngModel)]="listOfFormDto.phoneNumber" type="text" nz-input formControlName="phoneNumber" placeholder="PhoneNumber" />
-          </nz-input-group>
-      </nz-form-control>
-    </nz-form-item>
-    <nz-form-item>
-      <nz-form-control nzErrorTip="Vui lòng nhập Email!">
-          <nz-form-label [nzSpan]="7" nzRequired>Email</nz-form-label>
-          <nz-input-group nzPrefixIcon="user" style="border-radius: 50px; ">
-            <input [(ngModel)]="listOfFormDto.email" type="text" nz-input formControlName="email" placeholder="Email" />
-          </nz-input-group>
-      </nz-form-control>
-    </nz-form-item>
-    <nz-form-item>
-      <nz-form-control nzErrorTip="Vui lòng nhập Nationality">
-          <nz-form-label [nzSpan]="7" nzRequired>Nationality </nz-form-label>
-          <nz-input-group nzPrefixIcon="user" style="border-radius: 50px; ">
-            <input [(ngModel)]="listOfFormDto.nationality" type="text" nz-input formControlName="nationality" placeholder="Nationality" />
-          </nz-input-group>
-      </nz-form-control>
-    </nz-form-item>
-    <nz-form-item>
-      <nz-form-control nzErrorTip="Vui lòng nhập IdentityNo">
-          <nz-form-label [nzSpan]="7" nzRequired>IdentityNo </nz-form-label>
-          <nz-input-group nzPrefixIcon="user" style="border-radius: 50px; ">
-            <input [(ngModel)]="listOfFormDto.identityNo" type="text" nz-input formControlName="identityNo" placeholder="IdentityNo" />
-          </nz-input-group>
-      </nz-form-control>
-    </nz-form-item>
-    <nz-form-item>
-      <nz-form-control nzErrorTip="Vui lòng nhập LisenceNo">
-          <nz-form-label [nzSpan]="7" nzRequired>LisenceNo </nz-form-label>
-          <nz-input-group nzPrefixIcon="user" style="border-radius: 50px; ">
-            <input [(ngModel)]="listOfFormDto.lisenseNo" type="text" nz-input formControlName="lisenseNo" placeholder="LisenceNo" />
-          </nz-input-group>
-      </nz-form-control>
-    </nz-form-item>
-    <nz-form-item>
-      <nz-form-control nzErrorTip="Vui lòng nhập Address">
-          <nz-form-label [nzSpan]="7" nzRequired>Address </nz-form-label>
-          <nz-input-group nzPrefixIcon="user" style="border-radius: 50px; ">
-            <input [(ngModel)]="listOfFormDto.address" type="text" nz-input formControlName="address" placeholder="Address" />
-          </nz-input-group>
-      </nz-form-control>
-    </nz-form-item>
+    <div nz-row [nzGutter]="24">
+      <div nz-col [nzSpan]="12">
+        <nz-form-item>
+          <nz-form-control nzErrorTip="Vui lòng nhập FirstName !">
+              <nz-form-label [nzSpan]="7" nzRequired>FirstName</nz-form-label>
+              <nz-input-group nzPrefixIcon="user" style="border-radius: 50px; ">
+                <input [(ngModel)]="listOfFormDto.firstName" type="text" nz-input formControlName="firstName" placeholder="FirstName" />
+              </nz-input-group>
+          </nz-form-control>
+        </nz-form-item>
+        <nz-form-item>
+          <nz-form-control nzErrorTip="Vui lòng nhập LastName!">
+              <nz-form-label [nzSpan]="7" nzRequired>LastName</nz-form-label>
+              <nz-input-group nzPrefixIcon="user" style="border-radius: 50px; ">
+                <input [(ngModel)]="listOfFormDto.lastName" type="text" nz-input formControlName="lastName" placeholder="LastName" />
+              </nz-input-group>
+          </nz-form-control>
+        </nz-form-item>
+        <nz-form-item>
+          <nz-form-control nzErrorTip="Vui lòng nhập DOB!">
+              <nz-form-label [nzSpan]="7" nzRequired>DOB</nz-form-label>
+                <nz-date-picker [(ngModel)]="listOfFormDto.dateOfBirth" formControlName="dateOfBirth" placeholder="dateOfBirth" ></nz-date-picker>
+          </nz-form-control>
+        </nz-form-item>
+        <nz-form-item>
+          <nz-form-control nzErrorTip="Vui lòng nhập PhoneNumber!">
+              <nz-form-label [nzSpan]="7" nzRequired>PhoneNumber</nz-form-label>
+              <nz-input-group nzPrefixIcon="user" style="border-radius: 50px; ">
+                <input [(ngModel)]="listOfFormDto.phoneNumber" type="text" nz-input formControlName="phoneNumber" placeholder="PhoneNumber" />
+              </nz-input-group>
+          </nz-form-control>
+        </nz-form-item>
+        <nz-form-item>
+          <nz-form-control nzErrorTip="Vui lòng nhập Email!">
+              <nz-form-label [nzSpan]="7" nzRequired>Email</nz-form-label>
+              <nz-input-group nzPrefixIcon="user" style="border-radius: 50px; ">
+                <input [(ngModel)]="listOfFormDto.email" type="text" nz-input formControlName="email" placeholder="Email" />
+              </nz-input-group>
+          </nz-form-control>
+        </nz-form-item>
+      </div>
+      <div nz-col [nzSpan]="12">
+        <nz-form-item>
+          <nz-form-control nzErrorTip="Vui lòng nhập Nationality">
+              <nz-form-label [nzSpan]="7" nzRequired>Nationality </nz-form-label>
+              <nz-input-group nzPrefixIcon="user" style="border-radius: 50px; ">
+                <input [(ngModel)]="listOfFormDto.nationality" type="text" nz-input formControlName="nationality" placeholder="Nationality" />
+              </nz-input-group>
+          </nz-form-control>
+        </nz-form-item>
+        <nz-form-item>
+          <nz-form-control nzErrorTip="Vui lòng nhập IdentityNo">
+              <nz-form-label [nzSpan]="7" nzRequired>IdentityNo </nz-form-label>
+              <nz-input-group nzPrefixIcon="user" style="border-radius: 50px; ">
+                <input [(ngModel)]="listOfFormDto.identityNo" type="text" nz-input formControlName="identityNo" placeholder="IdentityNo" />
+              </nz-input-group>
+          </nz-form-control>
+        </nz-form-item>
+        <nz-form-item>
+          <nz-form-control nzErrorTip="Vui lòng nhập LisenceNo">
+              <nz-form-label [nzSpan]="7" nzRequired>LisenceNo </nz-form-label>
+              <nz-input-group nzPrefixIcon="user" style="border-radius: 50px; ">
+                <input [(ngModel)]="listOfFormDto.lisenseNo" type="text" nz-input formControlName="lisenseNo" placeholder="LisenceNo" />
+              </nz-input-group>
+          </nz-form-control>
+        </nz-form-item>
+        <nz-form-item>
+          <nz-form-control nzErrorTip="Vui lòng nhập Address">
+              <nz-form-label [nzSpan]="7" nzRequired>Address </nz-form-label>
+              <nz-input-group nzPrefixIcon="user" style="border-radius: 50px; ">
+                <input [(ngModel)]="listOfFormDto.address" type="text" nz-input formControlName="address" placeholder="Address" />
+              </nz-input-group>
+          </nz-form-control>
+        </nz-form-item>
+      </div>
+    </div>
   </form>
   </ng-container>
 </nz-modal>
