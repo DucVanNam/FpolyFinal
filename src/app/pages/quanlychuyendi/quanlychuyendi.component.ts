@@ -1,11 +1,13 @@
 import { Component, OnInit } from '@angular/core';
-interface Person {
-  key: string;
-  From: string;
-  To: string;
-  DepartureTime: string;
-  TripNo: string;
-  MinPrice: string;
+import { Router } from '@angular/router';
+import { QuanLyChuyenDiService } from './quanlychuyendi.service';
+interface Trips {
+  id: string;
+  from: string;
+  to: string;
+  departureTime: string;
+  tripNo: string;
+  minPrice: string;
 }
 @Component({
   selector: 'app-datvexe',
@@ -13,78 +15,22 @@ interface Person {
   styleUrls: ['./quanlychuyendi.component.scss']
 })
 
-export class QuanLyChuyenDiComponent{
+export class QuanLyChuyenDiComponent implements OnInit{
   date = null;
-  constructor() {}
-  listOfData: Person[] = [
-    {
-      key: '1',
-      From: 'Hà Nội',
-      To: 'Hải Phòng',
-      DepartureTime: '11/10/2022',
-      TripNo: 'No11',
-      MinPrice:'123000'
-    },
-    {
-      key: '1',
-      From: 'Hà Nội',
-      To: 'Hải Phòng',
-      DepartureTime: '11/10/2022',
-      TripNo: 'No11',
-      MinPrice:'123000'
-    },
-    {
-      key: '1',
-      From: 'Hà Nội',
-      To: 'Hải Phòng',
-      DepartureTime: '11/10/2022',
-      TripNo: 'No11',
-      MinPrice:'123000'
-    },
-    {
-      key: '1',
-      From: 'Hà Nội',
-      To: 'Hải Phòng',
-      DepartureTime: '11/10/2022',
-      TripNo: 'No11',
-      MinPrice:'123000'
-    },
-    {
-      key: '1',
-      From: 'Hà Nội',
-      To: 'Hải Phòng',
-      DepartureTime: '11/10/2022',
-      TripNo: 'No11',
-      MinPrice:'123000'
-    },
-    {
-      key: '1',
-      From: 'Hà Nội',
-      To: 'Hải Phòng',
-      DepartureTime: '11/10/2022',
-      TripNo: 'No11',
-      MinPrice:'123000'
-    },
-    {
-      key: '1',
-      From: 'Hà Nội',
-      To: 'Hải Phòng',
-      DepartureTime: '11/10/2022',
-      TripNo: 'No11',
-      MinPrice:'123000'
-    },
-    {
-      key: '1',
-      From: 'Hà Nội',
-      To: 'Hải Phòng',
-      DepartureTime: '11/10/2022',
-      TripNo: 'No11',
-      MinPrice:'123000'
-    }
-  ];
+  constructor(private tripService : QuanLyChuyenDiService, private router: Router) {}
+  ngOnInit(): void {
+    this.getList();
+  }
+
+  getList(){
+    this.tripService.getAllTrips().subscribe((res: any)=>{
+      this.listOfData = res;
+   })
+  }
+  listOfData: Trips[] = [];
   isVisible = false;
   showModal(): void {
-    this.isVisible = true;
+    this.router.navigate(['/taochuyendi'])
   }
   handleOk(): void {
     console.log('Button ok clicked!');
@@ -94,5 +40,8 @@ export class QuanLyChuyenDiComponent{
   handleCancel(): void {
     console.log('Button cancel clicked!');
     this.isVisible = false;
+  }
+
+  submitForm(): void {
   }
 }

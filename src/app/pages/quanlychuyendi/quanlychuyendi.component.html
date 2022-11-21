@@ -10,18 +10,15 @@
     <button nz-button nzType="primary" style="float: right; background-color: #4f46e5; "> <span nz-icon nzType="file"
         nzTheme="outline"></span>Xuất
       Excel</button>
-    <button nz-button nzType="primary" style="float: right; background-color: #4f46e5;"><span nz-icon nzType="file"
-        nzTheme="outline"></span>Import
-      Excel</button>
     <button (click)="showModal()" nz-button nzType="primary" style="float: right; background-color: #10B981;"> <span
         nz-icon nzType="plus" nzTheme="outline"></span>Thêm chuyến</button>
   </div>
   <nz-table #basicTable [nzData]="listOfData">
     <thead>
       <tr>
-        <th>Điểm bắt đầu</th>
+        <th>Điểm đi</th>
         <th>Điểm đến</th>
-        <th>Giờ khởi hành</th>
+        <th>Thời điểm khởi hành</th>
         <th>Mã chuyến</th>
         <th>Giá tiền</th>
         <th>Action</th>
@@ -29,13 +26,12 @@
     </thead>
     <tbody>
       <tr *ngFor="let data of basicTable.data">
-        <td>{{ data.From }}</td>
-        <td>{{ data.To }}</td>
-        <td>{{ data.DepartureTime }}</td>
-        <td>{{ data.TripNo }}</td>
-        <td>{{ data.MinPrice }}</td>
+        <td>{{ data.from }}</td>
+        <td>{{ data.to }}</td>
+        <td>{{ data.departureTime | date: 'dd-MM-yyyy HH:mm'}}</td>
+        <td>{{ data.tripNo }}</td>
+        <td>{{ data.minPrice }}</td>
         <td>
-          <a>Action一{{ data.From }}</a>
           <nz-divider nzType="vertical"></nz-divider>
           <a style="color: red;"><span nz-icon nzType="edit" nzTheme="outline"></span></a>
           <nz-divider nzType="vertical"></nz-divider>

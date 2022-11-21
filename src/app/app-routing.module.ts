@@ -21,7 +21,8 @@ const routes: Routes = [
       { path: 'quanlychuyendi', loadChildren: () => import('./pages/quanlychuyendi/quanlychuyendi.module').then(m => m.QuanLyChuyenDiModule) },
       { path: 'quanlynhaxe', loadChildren: () => import('./pages/quanlynhaxe/quanlynhaxe.module').then(m => m.QuanLyNhaXeModule) },
       { path: 'quanlylayout', loadChildren: () => import('./pages/quanlylayout/quanlylayout.module').then(m => m.QuanLyLayOutModule) },
-      { path: 'quanlytype', loadChildren: () => import('./pages/quanlytype/quanlytype.module').then(m => m.QuanLyTypeModule) }
+      { path: 'quanlytype', loadChildren: () => import('./pages/quanlytype/quanlytype.module').then(m => m.QuanLyTypeModule) },
+      { path: 'taochuyendi', loadChildren: () => import('./pages/taochuyendi/taochuyendi.module').then(m => m.TaoChuyenDiModule) }
     ]
   },
 ];
