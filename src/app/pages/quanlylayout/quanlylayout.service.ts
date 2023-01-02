@@ -12,7 +12,7 @@ export class QuanLyLayoutService extends ServiceBaseService{
   return this.post(`api/Layout/Create`, params);
  }
  deleteLayout(id: any){
-  return this.delete(`api/Layout/Delete/${id}`);
+  return this.post(`api/Layout/Delete/${id}`, null);
 }
 update(params: any, id: any){
   return this.put(`api/Layout/Update/${id}`, params);

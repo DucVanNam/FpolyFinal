@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { NzMessageService } from 'ng-zorro-antd/message';
-import { NzModalService } from 'ng-zorro-antd/modal';
+import { NzModalRef, NzModalService } from 'ng-zorro-antd/modal';
 import { QuanLyTypeService } from './quanlyxe.service';
 
 interface ILayout {
@@ -34,6 +34,8 @@ export class QuanlytypeComponent implements OnInit {
       layout: [null, [Validators.required]],
     });
   }
+  confirmModal?: NzModalRef;
+  iscreup : boolean = true;
   validateForm!: FormGroup;
   listOfData: Type[] = [];
   infoLayout: ILayout[] = [];
@@ -119,6 +121,42 @@ export class QuanlytypeComponent implements OnInit {
       layoutId: null
     }
     this.isVisible = false;
+  }
+  update(){
+    if(this.validateForm.valid){
+      let params = {
+        name: this.listOfFormDto.name,
+        seats: this.listOfFormDto.seats,
+        layoutId: this.listOfFormDto.layoutId
+      }
+      this.typeService.update(params, this.listOfFormDto.id).subscribe((res: any)=>{
+        this.successUpdateMessage();
+        this.handleCancel();
+        this.getall();
+     })
+  }
+}
+  updateType(item: any){
+    this.iscreup = false
+    this.listOfFormDto.id = item.id,
+    this.listOfFormDto.layoutId = item.layoutId,
+    this.listOfFormDto.name = item.name,
+    this.listOfFormDto.seats = item.seats,
+    this.isVisible = true;
+  }
+
+  delete(record: any){
+    console.log('record',record.id);
+    this.confirmModal = this.modal.confirm({
+      nzTitle: 'Xác nhận xóa bản ghi?',
+      nzContent: 'Bạn có chắc muốn xóa bản ghi này không?',
+      nzOnOk: () =>{
+        this.typeService.delete(record.id).subscribe((res: any)=>{
+          this.successDeleteMessage();
+          this.getall();
+       })
+      }
+    });
   }
 
 }

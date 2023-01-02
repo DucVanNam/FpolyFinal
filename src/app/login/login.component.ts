@@ -10,7 +10,7 @@ import { AuthService } from './auth.service';
 })
 export class LoginComponent implements OnInit {
 
-  Username = '';
+  UserName = '';
   Password = '';
   Tenant = '';
   TenantId: any;
@@ -29,13 +29,12 @@ export class LoginComponent implements OnInit {
 
   submitLogin() {
     const params ={
-      name : this.Username,
+      UserName : this.UserName,
       password: this.Password
     }
- this.authService.login(params).subscribe((response)=>{
+  this.authService.login(params).subscribe((response)=>{
   this.router.navigate(['/quanlyxe'], { replaceUrl: true });
  })
-    
   }
 
   ngOnInit(): void {

@@ -6,7 +6,7 @@ import { ServiceBaseService } from 'src/app/services/service-base.service';
 })
 export class ApiService extends ServiceBaseService{
  login(param: any){
-    return this.post(`api/Auth/authenticate`, param);
+    return this.post(`api/Login`, param);
  }
 
 }

@@ -32,15 +32,15 @@
       <td>{{ data.seats }}</td>
       <td>
         <nz-divider nzType="vertical"></nz-divider>
-        <a style="color: red;"><span nz-icon nzType="edit" nzTheme="outline"></span></a>
+        <a (click)="updateType(data)" style="color: red;"><span nz-icon nzType="edit" nzTheme="outline"></span></a>
         <nz-divider nzType="vertical"></nz-divider>
-        <a><span nz-icon nzType="delete" nzTheme="outline"></span></a>
+        <a (click)=" delete(data) "><span nz-icon nzType="delete" nzTheme="outline"></span></a>
       </td>
     </tr>
   </tbody>
 </nz-table>
 
-<nz-modal [(nzVisible)]="isVisible" nzTitle="Thêm Layout" (nzOnCancel)="handleCancel()" (nzOnOk)="create()">
+<nz-modal [(nzVisible)]="isVisible" nzTitle="Thêm Layout" (nzOnCancel)="handleCancel()" (nzOnOk)="iscreup ? create() : update()">
   <ng-container *nzModalContent>
     <form nz-form [formGroup]="validateForm">
     <nz-form-item>

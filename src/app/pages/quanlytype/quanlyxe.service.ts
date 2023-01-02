@@ -14,5 +14,11 @@ export class QuanLyTypeService extends ServiceBaseService{
 create(params: any){
   return this.post(`api/Type/create`, params);
 }
+update(params: any, id: any){
+  return this.put(`api/type/Update/${id}`, params);
+}
+delete(id: any){
+  return this.post(`api/Type/Delete/${id}`, null);
+}
 
 }
