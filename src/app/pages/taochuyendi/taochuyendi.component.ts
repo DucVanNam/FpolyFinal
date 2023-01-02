@@ -19,6 +19,14 @@ interface ITo {
   value: number;
 };
 
+interface IType {
+  id: string;
+  name: string;
+  value: string;
+  numberOfDeckers: Number;
+  seats: Number
+}
+
 export interface IDiemdon {
   phoneNumber: string;
   address: string;
@@ -295,18 +303,20 @@ export class TaoChuyenDiComponent implements OnInit{
     }
   ];
 
-
+  infoType: IType[] = [];
 
   constructor(public fb: FormBuilder, private createService : TaoChuyenDiService,) { }
   diemDon: IDiemdon[] = [];
   diemTra: IDiemtra[] = [];
   ngOnInit(): void {
+    this.getInfoForCreateTrip();
     this.validateForm = this.fb.group({
       code: [null, [Validators.required]],
-      diemdi: [null, [Validators.required]],
-      diemden: [null, [Validators.required]],
+      from: [null, [Validators.required]],
+      to: [null, [Validators.required]],
       thoigian: [null, [Validators.required]],
       price: [null, [Validators.required]],
+      type: [null, [Validators.required]],
     });
   }
 
@@ -330,6 +340,13 @@ export class TaoChuyenDiComponent implements OnInit{
   showModal2(): void {
     this.isVisible2 = true;
   }
+
+  getInfoForCreateTrip(){
+    this.createService.getInfoForCreateTrip().subscribe((res: any)=>{
+      this.infoType = res;
+   })
+  }
+
 themDiemDon(){
   const par = {
     phoneNumber: this.phoneNumberDon,

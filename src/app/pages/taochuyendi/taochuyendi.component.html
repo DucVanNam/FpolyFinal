@@ -19,7 +19,7 @@
                 <nz-form-item>
                     <nz-form-control nzErrorTip="Vui lòng nhập điểm đi!">
                         <nz-form-label [nzSpan]="7" nzRequired>Điểm đi</nz-form-label>
-                        <nz-select nzShowSearch nzAllowClear nzPlaceHolder="Điểm đi" [(ngModel)]="listOfFormDto.from">
+                        <nz-select formControlName="from" nzShowSearch nzAllowClear nzPlaceHolder="Điểm đi" [(ngModel)]="listOfFormDto.from">
                             <nz-option *ngFor="let f of address" [nzLabel]="f.lable" [nzValue]="f.value">
                             </nz-option>
                           </nz-select>
@@ -28,7 +28,7 @@
                 <nz-form-item>
                     <nz-form-control nzErrorTip="Vui lòng nhập điểm đến!">
                         <nz-form-label [nzSpan]="7" nzRequired>Điểm đến</nz-form-label>
-                        <nz-select nzShowSearch nzAllowClear nzPlaceHolder="Điểm đến" [(ngModel)]="listOfFormDto.to">
+                        <nz-select formControlName="to" nzShowSearch nzAllowClear nzPlaceHolder="Điểm đến" [(ngModel)]="listOfFormDto.to">
                             <nz-option *ngFor="let t of address" [nzLabel]="t.lable" [nzValue]="t.value">
                             </nz-option>
                           </nz-select>
@@ -56,11 +56,12 @@
                     </nz-form-control>
                 </nz-form-item>
                 <nz-form-item>
-                    <nz-form-control nzErrorTip="Vui lòng nhập type!">
-                        <nz-form-label [nzSpan]="7" nzRequired>TypeId</nz-form-label>
-                        <nz-input-group nzPrefixIcon="user">
-                            <input [(ngModel)]="listOfFormDto.typeId" type="text" nz-input formControlName="price" placeholder="id" />
-                        </nz-input-group>
+                    <nz-form-control nzErrorTip="Vui lòng nhập loại xe!">
+                        <nz-form-label [nzSpan]="7" nzRequired>Chọn loại xe</nz-form-label>
+                        <nz-select formControlName="type" style="border-radius: 50px;" nzShowSearch nzAllowClear nzPlaceHolder="Chọn loại xe">
+                            <nz-option *ngFor="let idtype of infoType" [nzLabel]="idtype.name" [nzValue]="idtype.id">
+                            </nz-option>
+                          </nz-select>
                     </nz-form-control>
                 </nz-form-item>
             </form>

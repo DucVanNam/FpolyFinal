@@ -8,4 +8,7 @@ export class TaoChuyenDiService extends ServiceBaseService{
   create(params: any){
     return this.post(`api/Coach`, params);
   }
+  getInfoForCreateTrip(){
+    return this.get(`api/Coach/info`);
+  }
 }
