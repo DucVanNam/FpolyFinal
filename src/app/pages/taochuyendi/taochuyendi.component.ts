@@ -45,6 +45,8 @@ export class TaoChuyenDiComponent implements OnInit{
   isVisible = false;
   isVisible2 = false;
   validateForm!: FormGroup;
+  formDon!: FormGroup;
+  formTra!: FormGroup;
   selectedValue = null;
   date = null;
 
@@ -314,26 +316,20 @@ export class TaoChuyenDiComponent implements OnInit{
       code: [null, [Validators.required]],
       from: [null, [Validators.required]],
       to: [null, [Validators.required]],
-      thoigian: [null, [Validators.required]],
+      departureTime: [null, [Validators.required]],
       price: [null, [Validators.required]],
-      type: [null, [Validators.required]],
+      typeId: [null, [Validators.required]],
     });
+    this.formDon = this.fb.group({
+      phoneNumber: [null, [Validators.required]],
+      address: [null, [Validators.required]],
+    })
+    this.formTra = this.fb.group({
+      phoneNumber: [null, [Validators.required]],
+      address: [null, [Validators.required]],
+    })
   }
 
-  listOfFormDto = {
-    lisencePlates: null,
-    from : null,
-    to: null,
-    departureTime: null,
-    price: null,
-    typeId: null,
-  }
-
-  phoneNumberDon = '0989898989';
-  addressDon = 'Điểm đón test';
-
-  phoneNumberTra = '0989898989';
-  addressTra = 'Điểm trả test';
   showModal(): void {
     this.isVisible = true;
   }
@@ -348,21 +344,13 @@ export class TaoChuyenDiComponent implements OnInit{
   }
 
 themDiemDon(){
-  const par = {
-    phoneNumber: this.phoneNumberDon,
-    address: this.addressDon,
-  }
-  this.diemDon.push(par);
+  this.diemDon.push(this.formDon.value);
   this.diemDon = [...this.diemDon];
   this.isVisible = false;
 }
 
 themDiemTra(){
-  const par = {
-    phoneNumber: this.phoneNumberTra,
-    address: this.addressTra,
-  }
-  this.diemTra.push(par);
+  this.diemTra.push(this.formTra.value);
   this.diemTra = [...this.diemTra];
   this.isVisible2 = false;
 }
@@ -376,15 +364,17 @@ handleCancel2(): void {
 
 create(){
   if(this.validateForm.valid){
-    const da = new Date(2022/11/30)
-  let params = {
-    lisencePlates: this.listOfFormDto.lisencePlates,
-    from: this.listOfFormDto.from,
-    to: this.listOfFormDto.to,
-    price: this.listOfFormDto.price,
-    departureTime: da,
-    typeId: this.listOfFormDto.typeId
-  };
+  // this.validateForm.value;
+  const params = {
+    from: this.validateForm.get('from')?.value,
+    to: this.validateForm.get('to')?.value,
+    typeId: this.validateForm.get('typeId')?.value,
+    price: this.validateForm.get('price')?.value,
+    departureTime: this.validateForm.get('departureTime')?.value,
+    pickups: this.diemDon,
+    dropOffs: this.diemTra
+  }
+  console.log('para',params);
   this.createService.create(params).subscribe((res: any) => {
     console.log('res',res);
   });
