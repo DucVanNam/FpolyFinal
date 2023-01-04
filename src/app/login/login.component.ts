@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { NzModalService } from 'ng-zorro-antd/modal';
+import { ApiService } from './api.service';
 import { AuthService } from './auth.service';
 
 @Component({
@@ -21,22 +22,38 @@ export class LoginComponent implements OnInit {
   constructor(
     private router: Router,
     private modal: NzModalService,
-    private authService : AuthService
+    private loginService: ApiService,
   ) { }
 
   submitTenant() {
   }
 
   submitLogin() {
+    if (this.UserName == '' || this.Password == '') {
+      this.modal.error({
+        nzTitle: 'Lỗi',
+        nzContent: 'Chưa nhập đầy đủ các thông tin!'
+      });
+    }
     const params ={
       UserName : this.UserName,
       password: this.Password
     }
-  this.authService.login(params).subscribe((response)=>{
-  this.router.navigate(['/quanlyxe'], { replaceUrl: true });
- })
+    this.loginService.login(params).subscribe((data) =>{{
+      if(data == null){
+        this.modal.error({
+          nzTitle: 'Lỗi',
+          nzContent: 'Tên tài khoản hoặc mật khẩu không chính xác!'
+        });
+      }
+      else{
+        localStorage.setItem('idCoach', JSON.stringify(data.id));
+        this.router.navigate(['/quanlychuyendi'], { replaceUrl: true });
+      }
+    }});
   }
 
   ngOnInit(): void {
+    localStorage.clear();
   }
 }

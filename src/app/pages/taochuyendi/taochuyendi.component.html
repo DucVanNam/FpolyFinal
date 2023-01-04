@@ -9,14 +9,6 @@
             <h3>Thông tin</h3>
             <form nz-form [formGroup]="validateForm">
                 <nz-form-item>
-                    <nz-form-control nzErrorTip="Vui lòng nhập mã!">
-                        <nz-form-label [nzSpan]="7" nzRequired>Mã</nz-form-label>
-                        <nz-input-group nzPrefixIcon="user">
-                            <input  type="text" nz-input formControlName="code" placeholder="Mã chuyến đi" />
-                        </nz-input-group>
-                    </nz-form-control>
-                </nz-form-item>
-                <nz-form-item>
                     <nz-form-control nzErrorTip="Vui lòng nhập điểm đi!">
                         <nz-form-label [nzSpan]="7" nzRequired>Điểm đi</nz-form-label>
                         <nz-select formControlName="from" nzShowSearch nzAllowClear nzPlaceHolder="Điểm đi">
@@ -179,7 +171,7 @@
         <div class="form-group" nz-row>
             <nz-form-label nz-col nzSpan="8" nzFor="thoigianxuly" style="font-weight: bold;">Địa điểm đón
             </nz-form-label>
-            <nz-form-control nz-col nzSpan="16" nzErrorTip="Chưa nhập địa điểm đón">
+            <nz-form-control nz-col nzSpan="16" nzErrorTip="Chưa nhập địa trả">
                 <input nz-input type="text" formControlName="address">
             </nz-form-control>
         </div><br>

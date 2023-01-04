@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { TaoChuyenDiService } from './taochuyendi.service';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 interface Trips {
   id: string;
   from: string;
@@ -307,13 +308,15 @@ export class TaoChuyenDiComponent implements OnInit{
 
   infoType: IType[] = [];
 
-  constructor(public fb: FormBuilder, private createService : TaoChuyenDiService,) { }
+  constructor(public fb: FormBuilder, private createService : TaoChuyenDiService,private router: Router,) { }
   diemDon: IDiemdon[] = [];
   diemTra: IDiemtra[] = [];
+  idCoach = localStorage.getItem('idCoach')?.replace('"','').replace('"','');
+  
   ngOnInit(): void {
+    console.log('id',this.idCoach);
     this.getInfoForCreateTrip();
     this.validateForm = this.fb.group({
-      code: [null, [Validators.required]],
       from: [null, [Validators.required]],
       to: [null, [Validators.required]],
       departureTime: [null, [Validators.required]],
@@ -361,7 +364,6 @@ handleCancel(): void {
 handleCancel2(): void {
   this.isVisible2 = false;
 }
-
 create(){
   if(this.validateForm.valid){
   // this.validateForm.value;
@@ -372,11 +374,12 @@ create(){
     price: this.validateForm.get('price')?.value,
     departureTime: this.validateForm.get('departureTime')?.value,
     pickups: this.diemDon,
-    dropOffs: this.diemTra
+    dropOffs: this.diemTra,
+    coachOwnerId: this.idCoach
   }
-  console.log('para',params);
   this.createService.create(params).subscribe((res: any) => {
     console.log('res',res);
+    this.router.navigate(['/quanlychuyendi'], { replaceUrl: true });
   });
   }
   else{
