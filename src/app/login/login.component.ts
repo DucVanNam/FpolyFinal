@@ -15,9 +15,11 @@ export class LoginComponent implements OnInit {
   Password = '';
   Tenant = '';
   TenantId: any;
+  Email='';
   data: any;
   dataUser: any;
   flagCheckTenant = false;
+  showFormLogin: boolean = true;
 
   constructor(
     private router: Router,
@@ -35,6 +37,7 @@ export class LoginComponent implements OnInit {
         nzContent: 'Chưa nhập đầy đủ các thông tin!'
       });
     }
+    debugger
     const params ={
       UserName : this.UserName,
       password: this.Password
@@ -52,8 +55,19 @@ export class LoginComponent implements OnInit {
       }
     }});
   }
+  submitFogot(){
+    if (this.Email == '') {
+      this.modal.error({
+        nzTitle: 'Lỗi',
+        nzContent: 'Vui lòng nhập Email'
+      });
+    }
+  }
 
   ngOnInit(): void {
     localStorage.clear();
+  }
+  doForgot(){
+    this.showFormLogin = !this.showFormLogin;
   }
 }

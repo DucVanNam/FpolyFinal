@@ -75,7 +75,8 @@ export class DatvexeComponent implements OnInit{
   'Bình Thuận','Cà Mau','Cần Thơ','Cao Bằng','Đà Nẵng','Đắk Lắk','Đắk Nông','Điện Biên','Đồng Nai','Đồng Tháp'
   ,'Gia Lai','Hà Giang','Hà Nam','Hà Tĩnh','Hậu Giang','Hòa Bình','Hưng Yên','Khánh Hòa','Kiên Giang','Kon Tum',
   'Lai Châu','Lâm Đồng','Lào Cai','Long An','Nam Định','Nghệ An','Ninh Bình','Ninh Thuận','Phú Thọ','Phú Yên','Quảng Bình',
-  
+  'Bình Phước','Vĩnh Phúc','Vĩnh Long','Tuyên Quang','Trà Vinh','Tiền Giang','Thừa Thiên Huế','Thanh Hóa',
+  'Thái Nguyên', 'Thái Bình','Tây Ninh','Sơn La','Sóc Trăng','Quảng Trị','Quảng Ngãi','Quảng Nam', 'Nghệ An'
 ];
 
    

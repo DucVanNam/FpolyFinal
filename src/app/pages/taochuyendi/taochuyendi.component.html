@@ -1,59 +1,57 @@
 <div>
     <div>
         <h2>Tạo chuyến đi</h2>
-        <button (click)="create()" nz-button nzType="primary" style="float: right; background-color: #10B981;">Tạo</button> 
+        <button (click)="create()" nz-button nzType="primary" style=" margin-top: 12px;
+        border-radius: 60px;float: right; background-color: #10B981;">Tạo</button>
     </div>
     <hr>
     <div nz-row>
         <div nz-col nzSpan="12">
-            <h3>Thông tin</h3>
+            <h3 style="text-align: center;">Thông tin</h3>
             <form nz-form [formGroup]="validateForm">
                 <nz-form-item>
                     <nz-form-control nzErrorTip="Vui lòng nhập điểm đi!">
                         <nz-form-label [nzSpan]="7" nzRequired>Điểm đi</nz-form-label>
-                        <nz-select formControlName="from" nzShowSearch nzAllowClear nzPlaceHolder="Điểm đi">
-                            <nz-option *ngFor="let f of address" [nzLabel]="f.lable" [nzValue]="f.value">
-                            </nz-option>
-                          </nz-select>
+                            <nz-select style=" width: 650px; height: 35px;" formControlName="from" nzShowSearch nzAllowClear nzPlaceHolder="Điểm đi">
+                                <nz-option *ngFor="let f of address" [nzLabel]="f.lable" [nzValue]="f.value">
+                                </nz-option>
+                            </nz-select>
                     </nz-form-control>
                 </nz-form-item>
                 <nz-form-item>
                     <nz-form-control nzErrorTip="Vui lòng nhập điểm đến!">
                         <nz-form-label [nzSpan]="7" nzRequired>Điểm đến</nz-form-label>
-                        <nz-select formControlName="to" nzShowSearch nzAllowClear nzPlaceHolder="Điểm đến">
+                        <nz-select style=" width: 650px; height: 35px;" formControlName="to" nzShowSearch nzAllowClear
+                            nzPlaceHolder="Điểm đến">
                             <nz-option *ngFor="let t of address" [nzLabel]="t.lable" [nzValue]="t.value">
                             </nz-option>
-                          </nz-select>
+                        </nz-select>
                     </nz-form-control>
                 </nz-form-item>
                 <nz-form-item>
-                <nz-form-control nzErrorTip="Vui lòng nhập thời gian!">
-                    <nz-form-label [nzSpan]="7" nzRequired>Thời gian</nz-form-label>
-                  <nz-date-picker 
-                    formControlName="departureTime"
-                    nzShowTime
-                    nzPlaceHolder="Chọn thời gian" 
-                    style=" width: 784px; height: 35px; text-align: center; margin: 0;"
-                    [(ngModel)]="date" 
-                    nzFormat="dd/MM/yyyy HH:mm:ss">
-                  </nz-date-picker>  
-                </nz-form-control>
-            </nz-form-item>
+                    <nz-form-control nzErrorTip="Vui lòng nhập thời gian!">
+                        <nz-form-label [nzSpan]="7" nzRequired>Thời gian</nz-form-label>
+                        <nz-date-picker formControlName="departureTime" nzShowTime nzPlaceHolder="Chọn thời gian"
+                            style=" width: 650px; height: 35px;" [(ngModel)]="date" nzFormat="dd/MM/yyyy HH:mm:ss">
+                        </nz-date-picker>
+                    </nz-form-control>
+                </nz-form-item>
                 <nz-form-item>
                     <nz-form-control nzErrorTip="Vui lòng nhập giá!">
                         <nz-form-label [nzSpan]="7" nzRequired>Giá chuyến đi</nz-form-label>
-                        <nz-input-group nzPrefixIcon="user">
-                            <input type="text" nz-input formControlName="price" placeholder="Giá chuyến đi" />
+                        <nz-input-group>
+                            <input style=" width: 650px; height: 35px;" type="text" nz-input formControlName="price"
+                                placeholder="Giá chuyến đi" />
                         </nz-input-group>
                     </nz-form-control>
                 </nz-form-item>
                 <nz-form-item>
                     <nz-form-control nzErrorTip="Vui lòng nhập loại xe!">
                         <nz-form-label [nzSpan]="7" nzRequired>Chọn loại xe</nz-form-label>
-                        <nz-select formControlName="typeId" style="border-radius: 50px;" nzShowSearch nzAllowClear nzPlaceHolder="Chọn loại xe">
+                        <nz-select style=" width: 650px; height: 35px;" formControlName="typeId" nzShowSearch nzAllowClear nzPlaceHolder="Chọn loại xe">
                             <nz-option *ngFor="let idtype of infoType" [nzLabel]="idtype.name" [nzValue]="idtype.id">
                             </nz-option>
-                          </nz-select>
+                        </nz-select>
                     </nz-form-control>
                 </nz-form-item>
             </form>
@@ -63,9 +61,9 @@
                 <h3>Điểm đón</h3>
                 <div style="float: right;">
                     <button (click)="showModal()" style="border: #4caf50; background-color: #4caf50" nz-button
-                    nzType="primary" nzShape="circle">
-                    <i nz-icon nzType="plus"></i>
-                </button>
+                        nzType="primary" nzShape="circle">
+                        <i nz-icon nzType="plus"></i>
+                    </button>
                 </div>
                 <nz-table #tableList #basicTable [nzBordered]="true" [nzData]="diemDon">
                     <!-- (nzPageIndexChange)="pageIndexChange($event)" -->
@@ -98,9 +96,9 @@
                 <h3>Điểm trả</h3>
                 <div style="float: right;">
                     <button (click)="showModal2()" style="border: #4caf50; background-color: #4caf50" nz-button
-                    nzType="primary" nzShape="circle">
-                    <i nz-icon nzType="plus"></i>
-                </button>
+                        nzType="primary" nzShape="circle">
+                        <i nz-icon nzType="plus"></i>
+                    </button>
                 </div>
                 <nz-table #tableList #basicTable2 [nzBordered]="true" [nzData]="diemTra">
                     <!-- (nzPageIndexChange)="pageIndexChange($event)" -->
@@ -138,41 +136,50 @@
 
 
 <nz-modal [(nzVisible)]="isVisible" nzTitle="Thêm mới điểm đón" (nzOnCancel)="handleCancel()" (nzOnOk)="themDiemDon()">
-    <form nz-form [formGroup]="formDon" >
+    <form nz-form [formGroup]="formDon">
         <div class="form-group" nz-row>
-            <nz-form-label nz-col nzSpan="8" nzFor="tientrinh" style="font-weight: bold;">
+            <nz-form-label  nz-col nzSpan="8" nzFor="tientrinh" style="text-align: left; font-weight: bold;">
                 Số điện thoại
             </nz-form-label>
             <nz-form-control nz-col nzSpan="16" nzErrorTip="Chưa nhập số điện thoại">
+                <nz-input-group nzPrefixIcon="phone">
                 <input nz-input type="text" formControlName="phoneNumber">
+            </nz-input-group>
             </nz-form-control>
         </div><br>
         <div class="form-group" nz-row>
-            <nz-form-label nz-col nzSpan="8" nzFor="thoigianxuly" style="font-weight: bold;">
+            <nz-form-label nz-col nzSpan="8" nzFor="thoigianxuly" style="text-align: left;font-weight: bold;">
                 Địa điểm đón
             </nz-form-label>
             <nz-form-control nz-col nzSpan="16" nzErrorTip="Chưa nhập địa điểm đón">
-                <input nz-input type="text" formControlName="address">
+                <nz-input-group nzPrefixIcon="pushpin">
+                <input nzPrefixIcon="user" nz-input type="text" formControlName="address">
+            </nz-input-group>
             </nz-form-control>
         </div><br>
     </form>
 </nz-modal>
 
-<nz-modal [(nzVisible)]="isVisible2" nzTitle="Thêm mới điểm trả" (nzOnCancel)="handleCancel2()" (nzOnOk)="themDiemTra()">
+<nz-modal [(nzVisible)]="isVisible2" nzTitle="Thêm mới điểm trả" (nzOnCancel)="handleCancel2()"
+    (nzOnOk)="themDiemTra()">
     <form nz-form [formGroup]="formTra">
         <div class="form-group" nz-row>
-            <nz-form-label nz-col nzSpan="8" nzFor="tientrinh" style="font-weight: bold;">
+            <nz-form-label  nz-col nzSpan="8" nzFor="tientrinh" style="text-align: left; font-weight: bold;">
                 Số điện thoại
             </nz-form-label>
             <nz-form-control nz-col nzSpan="16" nzErrorTip="Chưa nhập số điện thoại">
+                <nz-input-group nzPrefixIcon="phone">
                 <input nz-input type="text" formControlName="phoneNumber">
+            </nz-input-group>
             </nz-form-control>
         </div><br>
         <div class="form-group" nz-row>
-            <nz-form-label nz-col nzSpan="8" nzFor="thoigianxuly" style="font-weight: bold;">Địa điểm đón
+            <nz-form-label nz-col nzSpan="8" nzFor="thoigianxuly" style="text-align: left;font-weight: bold;">Địa điểm đón
             </nz-form-label>
             <nz-form-control nz-col nzSpan="16" nzErrorTip="Chưa nhập địa trả">
+                <nz-input-group nzPrefixIcon="pushpin">
                 <input nz-input type="text" formControlName="address">
+            </nz-input-group>
             </nz-form-control>
         </div><br>
     </form>
